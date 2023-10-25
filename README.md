@@ -117,25 +117,8 @@ Mybatis-SQL分析组件
 | outputClass           | 评分结果输出类，用于扩展自定义结果输出方式 | 非       |                    |                             |
 | sqlReplaceModelSwitch | sql替换模块是否开启                        | 非       | 默认 false         |                             |
 
-## 4、默认分析效果展示
 
-### 1、慢sql分析效果
-
-![img](https://apijoyspace.jd.com/v1/files/OjcoVRyheCjQEWAB3ZcT/link)
-
-
-
-### 2、sql动态替换效果
-
-![img](https://apijoyspace.jd.com/v1/files/3XkF6VGtGjgiUCy7mRs2/link)
-
-
-
-
-
-
-
-## 5、实践使用方案
+## 4、实践使用方案
 
 ### 1、慢sql分析-日志输出+关键词告警
 
@@ -149,7 +132,6 @@ Mybatis-SQL分析组件
 </configuration>
 ```
 
-![img](https://apijoyspace.jd.com/v1/files/hbYEEFzqHss1Yvej3h7d/link)
 
 ### 2、慢sql分析-日志输出+mq输出+es存储+Kibana分析
 
@@ -170,15 +152,9 @@ Mybatis-SQL分析组件
 </configuration>
 ```
 
-最终效果
-
-![img](https://apijoyspace.jd.com/v1/files/TXCHAQYO5uYgbx6ejEnF/link)
-
 
 
 ### 3、慢sql替换-ducc配置动态更新sql语句
-
-
 
 ```
 <configuration>
@@ -192,20 +168,6 @@ Mybatis-SQL分析组件
     </plugins>
 </configuration>
 ```
-
-发现慢sql
-
-![img](https://apijoyspace.jd.com/v1/files/T3G21UIdAzfHUotml4gq/link)
-
-
-
-ducc配置
-
-![img](https://apijoyspace.jd.com/v1/files/NiklwLCpD3ySnQTBBaDN/link)
-
-线上sql被动态替换
-
-![img](https://apijoyspace.jd.com/v1/files/3XkF6VGtGjgiUCy7mRs2/link)
 
 注意：功能正式修复后，需去掉该配置，该功能仅供应急处理线上问题，不建议作为功能长期使用
 
