@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jd.sql.analysis_samples.mapper.TaskMapper">
+  <resultMap id="BaseResultMap" type="com.jd.sql.analysis_samples.po.Task">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="create_user" jdbcType="VARCHAR" property="createUser" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    id, title, content, create_user,create_time, update_time
+  </sql>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from task
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+
+  <!--通过实体作为筛选条件查询-->
+  <select id="queryAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from task
+    <where>
+      <if test="id != null">
+        and id = #{id}
+      </if>
+      <if test="title != null and title != ''">
+        and title = #{title}
+      </if>
+      <if test="content != null and content != ''">
+        and content = #{content}
+      </if>
+      <if test="createTime != null">
+        and create_time = #{createTime}
+      </if>
+      <if test="updateTime != null">
+        and update_time = #{updateTime}
+      </if>
+      <if test="createUser != null and createUser != ''">
+        and create_user = #{createUser}
+      </if>
+    </where>
+  </select>
+
+  <select id="queryAllM" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from task
+    where
+    id = #{id} and title = #{task.title}
+
+  </select>
+
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from task
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.jd.sql.analysis_samples.po.Task" useGeneratedKeys="true">
+    insert into task ( title,  content,  create_user,create_time, update_time)
+    values (#{title,jdbcType=VARCHAR},  #{content,jdbcType=VARCHAR},  #{createUser,jdbcType=VARCHAR},  #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP})
+  </insert>
+
+  <update id="updateByPrimaryKey" parameterType="com.jd.sql.analysis_samples.po.Task">
+    update task
+    set
+      title = #{title,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+
+</mapper>

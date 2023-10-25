@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <properties>
+        <property name="dialect" value="MYSQL"/>
+    </properties>
+    <settings>
+        <!-- 全局映射器启用缓存 -->
+        <setting name="cacheEnabled" value="true"/>
+        <!-- 启用延迟加载 -->
+        <setting name="lazyLoadingEnabled" value="false"/>
+        <!-- 对于未知的SQL查询，允许返回不同的结果集以达到通用的效果 -->
+        <setting name="multipleResultSetsEnabled" value="true"/>
+        <!-- 允许使用列标签代替列名 -->
+        <setting name="useColumnLabel" value="true"/>
+        <!-- 允许 JDBC 支持自动生成主键，并可将自动生成的主键返回 -->
+        <setting name="useGeneratedKeys" value="true"/>
+        <!-- 数据库超过25000秒仍未响应则超时 -->
+        <setting name="defaultStatementTimeout" value="25000"/>
+    </settings>
+    <typeHandlers>
+        <typeHandler handler="org.apache.ibatis.type.InstantTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTimeTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.LocalDateTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.LocalTimeTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.OffsetDateTimeTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.OffsetTimeTypeHandler"/>
+        <typeHandler handler="org.apache.ibatis.type.ZonedDateTimeTypeHandler"/>
+    </typeHandlers>
+
+
+    <plugins>
+        <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
+            <property name="appName" value="workbench-backend"/>
+            <property name="analysisSwitch" value="true"/>
+
+            <!-- 开启sql替换功能最简配置 -->
+            <property name="sqlReplaceModelSwitch" value="true"/>
+            <property name="duccAppName" value="workbench-backend"/>
+            <property name="duccUri" value="ucc://workbench-backend:2d6991cb865f4e6bac6c3e1cf7794cdf@test.ducc.jd.local/v1/namespace/workbench_backend/config/default/profiles/test?longPolling=60000&amp;necessary=false"/>
+            <property name="duccMonitorKey" value="sqlReplaceConfig"/>
+            <property name="outputModel" value="mq"/>
+            <property name="mqApp" value="qlstation"/>
+            <property name="mqUser" value="qlstation"/>
+            <property name="mqPassword" value="D1BCC547"/>
+            <property name="mqAddress" value="jmq-testcluster.jd.local:50088"/>
+            <property name="mqTopic" value="jdl_kds_key_node_log"/>
+        </plugin>
+    </plugins>
+
+    <environments default="dev">
+        <environment id="dev">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="${jdbc.driver}"/>
+                <property name="url" value="${jdbc.url}"/>
+                <property name="username" value="${jdbc.user}"/>
+                <property name="password" value="${jdbc.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <mappers>
+        <mapper resource="TaskMapper.xml"></mapper>
+    </mappers>
+</configuration>
