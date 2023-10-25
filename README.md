@@ -26,7 +26,7 @@ Mybatis-SQL分析组件
 
 目前，主流的sql分析组件，核心功能主要放在了两个方向：1、慢sql的分析和优化建议  2、sql的优化重写功能，而且主要偏运维的辅助功能无法做到无侵入的和应用代码进行集成。也就无法实现我们的核心痛点，慢sql提前分析预警和动态sql替换。
 
-![img](https://apijoyspace.jd.com/v1/files/eqGugADsf0wxxCYyiAq8/link)
+![img](https://github.com/huht123/sql-analysis-img/blob/main/%E5%AF%B9%E6%AF%94%E5%9B%BE.png)
 
 
 
@@ -36,7 +36,7 @@ Mybatis-SQL分析组件
 
 
 
-![img](https://apijoyspace.jd.com/v1/files/TzjGG3Zs4vuuEL82VB5U/link)
+![img](https://github.com/huht123/sql-analysis-img/blob/main/%E8%AE%BE%E8%AE%A1%E5%9B%BE.png)
 
 
 
