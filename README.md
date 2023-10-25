@@ -80,7 +80,7 @@ Mybatis-SQL分析组件
 <dependency>
     <groupId>com.jd.sql.analysis</groupId>
     <artifactId>sql-analysis</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2-OPEN-SNAPSHOT</version>
 </dependency>
 ```
 
@@ -245,12 +245,6 @@ ducc配置
 
 4、成本：接入成本低，无代码侵入。
 
-# 历史版本
-v1.0-慢sql分析
-
-v2.0-慢sql替换
-
-v3.0-慢sql评分规则配置化
 
 # 主要贡献者：
 扈海涛（huhaitao21@jd.com)、杨超（yangchao341@jd.com）、张泽龙（zhangzelong10@jd.com）
