@@ -95,9 +95,7 @@ Mybatis-SQL分析组件
 
             <!-- 开启sql替换功能最简配置 -->
             <property name="sqlReplaceModelSwitch" value="true"/>
-            <property name="duccAppName" value="workbench-backend"/>
-            <property name="duccUri" value="ucc://xxx@test.ducc.jd.local/v1/namespace/workbench_backend/config/default/profiles/test?longPolling=60000&necessary=false"/>
-            <property name="duccMonitorKey" value="refundBugFlag"/>
+           
         </plugin>
     </plugins>
 </configuration>
@@ -139,35 +137,31 @@ Mybatis-SQL分析组件
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
-            <property name="appName" value="workbench-backend"/>
             <property name="analysisSwitch" value="true"/>
-            <property name="outputModel" value="mq"/>
-            <property name="mqApp" value="qlstation"/>
-            <property name="mqUser" value="qlstation"/>
-            <property name="mqPassword" value="xxx"/>
-            <property name="mqAddress" value="jmq-testcluster.jd.local:50088"/>
-            <property name="mqTopic" value="jdl_kds_key_node_log"/>
+            <property name="outputClass" value="自定义输出类"/>
         </plugin>
     </plugins>
 </configuration>
 ```
+实现该接口，自定义输出方式（需要自己保证输出性能，可以采用异步队列）
+
+    com.jd.sql.analysis.out.SqlScoreResultOutService
 
 
-
-### 3、慢sql替换-ducc配置动态更新sql语句
+### 3、慢sql替换-配置动态更新sql语句
 
 ```
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
             <property name="sqlReplaceModelSwitch" value="true"/>
-            <property name="duccAppName" value="workbench-backend"/>
-            <property name="duccUri" value="ucc://xxxx@test.ducc.jd.local/v1/namespace/workbench_backend/config/default/profiles/test?longPolling=60000&necessary=false"/>
-            <property name="duccMonitorKey" value="sqlReplaceConfig"/>
         </plugin>
     </plugins>
 </configuration>
 ```
+可以集成自己环境的配置中心，通过如下方法或者映射map动态更新
+
+    com.jd.sql.analysis.replace.SqlReplaceConfig.getSqlReplaceMap
 
 注意：功能正式修复后，需去掉该配置，该功能仅供应急处理线上问题，不建议作为功能长期使用
 
@@ -211,6 +205,6 @@ Mybatis-SQL分析组件
 # 主要贡献者：
 扈海涛（huhaitao21@jd.com)、杨超（yangchao341@jd.com）、张泽龙（zhangzelong10@jd.com）
 
-# 欢迎共同改进
-共建/使用咨询群号：10203740800
+# 欢迎共同改进和使用咨询
+扈海涛（huhaitao21@jd.com)
 
