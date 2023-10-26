@@ -7,7 +7,7 @@
     <groupId>com.jd.sql.analysis</groupId>
     <artifactId>sql-analysis-build</artifactId>
     <packaging>pom</packaging>
-    <version>1.2-OPEN-SNAPSHOT</version>
+    <version>1.0</version>
     <modules>
         <module>sql-analysis-samples</module>
         <module>sql-analysis</module>
