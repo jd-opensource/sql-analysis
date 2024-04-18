@@ -5,9 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Author huhaitao21
- * @Description 默认分析结果输出方式
- * @Date 17:24 2022/11/7
+ * @author huhaitao21
+ *  默认分析结果输出方式
+ *  17:24 2022/11/7
  **/
 public class SqlScoreResultOutServiceDefault implements SqlScoreResultOutService {
 

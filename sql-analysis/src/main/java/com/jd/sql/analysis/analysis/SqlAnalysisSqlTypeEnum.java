@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.analysis;
 
 /**
- * @Author huhaitao21
- * @Description sql 分析组件支持分析的sql类型
- * @Date 19:36 2022/11/3
+ * @author huhaitao21
+ *  sql 分析组件支持分析的sql类型
+ *  19:36 2022/11/3
  **/
 public enum SqlAnalysisSqlTypeEnum {
 

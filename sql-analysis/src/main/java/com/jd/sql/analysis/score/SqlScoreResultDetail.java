@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.score;
 
 /**
- * @Author huhaitao21
- * @Description sql 评分结果
- * @Date 18:33 2022/11/2
+ * @author huhaitao21
+ *  sql 评分结果
+ *  18:33 2022/11/2
  **/
 public class SqlScoreResultDetail {
 

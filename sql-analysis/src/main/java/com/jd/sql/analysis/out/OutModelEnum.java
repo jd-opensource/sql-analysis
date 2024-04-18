@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.out;
 
 /**
- * @Author huhaitao21
- * @Description  分析结果输出模式
- * @Date 14:15 2023/2/8
+ * @author huhaitao21
+ *   分析结果输出模式
+ *  14:15 2023/2/8
  **/
 public enum OutModelEnum {
     LOG("LOG", "日志方式输出"),

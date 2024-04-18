@@ -34,9 +34,9 @@ import java.util.Properties;
 
 
 /**
- * @Author huhaitao21
- * @Description sql分析切面类
- * @Date 22:47 2022/10/25
+ * @author huhaitao21
+ *  sql分析切面类
+ *  22:47 2022/10/25
  **/
 @Intercepts({@Signature(
     type = StatementHandler.class,

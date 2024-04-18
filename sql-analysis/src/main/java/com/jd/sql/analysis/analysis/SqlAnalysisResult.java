@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.analysis;
 
 /**
- * @Author huhaitao21
- * @Description sql 分析结果dto
- * @Date 20:41 2022/11/1
+ * @author huhaitao21
+ *  sql 分析结果dto
+ *  20:41 2022/11/1
  **/
 public class SqlAnalysisResult {
 

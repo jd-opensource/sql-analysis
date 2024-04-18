@@ -3,9 +3,9 @@ package com.jd.sql.analysis.analysis;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description sql 分析结果 集合
- * @Date 20:41 2022/11/1
+ * @author huhaitao21
+ *  sql 分析结果 集合
+ *  20:41 2022/11/1
  **/
 public class SqlAnalysisResultList {
 

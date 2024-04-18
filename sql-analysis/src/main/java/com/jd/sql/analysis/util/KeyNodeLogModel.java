@@ -5,9 +5,9 @@ import lombok.Builder;
 import java.util.Date;
 
 /**
- * @Author huhaitao21
- * @Description 关键节点日志模型
- * @Date 16:45 2021/4/9
+ * @author huhaitao21
+ *  关键节点日志模型
+ *  16:45 2021/4/9
  **/
 @Builder
 public class KeyNodeLogModel {

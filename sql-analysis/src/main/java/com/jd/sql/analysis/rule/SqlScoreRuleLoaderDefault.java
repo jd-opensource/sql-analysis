@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description 评分规则管理实现
- * @Date 20:43 2022/11/1
+ * @author huhaitao21
+ *  评分规则管理实现
+ *  20:43 2022/11/1
  **/
 @Deprecated
 public class SqlScoreRuleLoaderDefault implements SqlScoreRuleLoader {

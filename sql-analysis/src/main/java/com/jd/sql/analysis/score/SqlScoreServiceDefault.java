@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description 评分服务默认实现
- * @Date 20:43 2022/11/1
+ * @author huhaitao21
+ *  评分服务默认实现
+ *  20:43 2022/11/1
  **/
 @Deprecated
 public class SqlScoreServiceDefault implements SqlScoreService {
@@ -69,7 +69,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
      * 规则匹配 返回 计算明细
      *
      * @param result
-     * @return
+     * @return 分析对象
      */
     private List<SqlScoreResultDetail> matchRule(SqlAnalysisResult result) {
         List<SqlScoreResultDetail> detailList = new ArrayList<>();
@@ -112,7 +112,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
      *
      * @param result
      * @param columnName
-     * @return
+     * @return 分析对象
      */
     private Object getValue(SqlAnalysisResult result, String columnName) {
         try {
@@ -132,7 +132,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
      *
      * @param sqlScoreRule
      * @param value        字段值
-     * @return
+     * @return 分析对象
      */
     private boolean matchColumn(SqlScoreRule sqlScoreRule, Object value) {
         boolean matchResult = false;

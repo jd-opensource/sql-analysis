@@ -13,9 +13,9 @@ import java.io.InputStream;
 import java.util.Properties;
 
 /**
- * @Author huhaitao21
- * @Description Mybatis工具类
- * @Date 14:35 2022/11/11
+ * @author huhaitao21
+ *  Mybatis工具类
+ *  14:35 2022/11/11
  **/
 public class MyBatisUtil {
     public static SqlSessionFactory sqlSessionFactory;
@@ -72,7 +72,7 @@ public class MyBatisUtil {
     /**
      * 由 SqlSessionFactory创建SqlSession
      *
-     * @return
+     *
      */
     public static SqlSession getSqlSession() {
         return sqlSessionFactory.openSession();

@@ -13,9 +13,9 @@ import java.util.Objects;
 import java.util.concurrent.ThreadFactory;
 
 /**
- * @Author huhaitao21
- * @Description 关键节点日志工具
- * @Date 20:03 2023/2/20
+ * @author huhaitao21
+ *  关键节点日志工具
+ *  20:03 2023/2/20
  **/
 public class KeyNodeLogUtil {
 
@@ -77,7 +77,7 @@ public class KeyNodeLogUtil {
 
     /**
      * 发布disruptor事件
-     * @param model
+     * @param model 日志对象
      */
     public static void applyLogEvent(KeyNodeLogModel model){
         if(ringBuffer==null){
@@ -115,7 +115,7 @@ public class KeyNodeLogUtil {
 
     /**
      * 单条日志发送
-     * @param model
+     * @param model 日志对象
      */
     public static void sendSingleLog(KeyNodeLogModel model){
         String content = GsonUtil.bean2Json(model);
@@ -127,6 +127,14 @@ public class KeyNodeLogUtil {
     }
 
 
+    /**
+     * 发送日志
+     * @param businessId 业务id
+     * @param modelName 模块名称
+     * @param nodeName 节点名称
+     * @param describe 描述
+     * @param businessTime 时间
+     */
     public static void sendLog(String businessId, String modelName, String nodeName, String describe,Date businessTime) {
         KeyNodeLogModel model = KeyNodeLogModel.builder()
                 .businessId(businessId)
@@ -146,8 +154,8 @@ public class KeyNodeLogUtil {
 
     /**
      * 检测模块 是否需要发送
-     * @param model
-     * @return
+     * @param model 日志对象
+     * @return 返回检查结果
      */
     public static boolean checkModel(KeyNodeLogModel model){
         if(StringUtils.isBlank(model.getBusinessId()) || StringUtils.isBlank(model.getModuleName()) || StringUtils.isBlank(model.getNodeName())){
@@ -156,6 +164,12 @@ public class KeyNodeLogUtil {
         return true;
     }
 
+    /**
+     * 发送mq消息
+     * @param topic 主题
+     * @param businessId 业务id
+     * @param messageBody 消息体
+     */
     public static void sendMessage(String topic,String businessId,String messageBody) {
         try {
             //todo 替换开源mq消息发送
@@ -174,6 +188,9 @@ public class KeyNodeLogUtil {
         }
     }
 
+    /**
+     * 初始化生产者
+     */
     public static synchronized void initProducer(){
     }
 }

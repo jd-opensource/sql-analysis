@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.extract;
 
 /**
- * @Author huhaitao21
- * @Description sql 提取结果
- * @Date 10:09 2022/11/7
+ * @author huhaitao21
+ *  sql 提取结果
+ *  10:09 2022/11/7
  **/
 public class SqlExtractResult {
 

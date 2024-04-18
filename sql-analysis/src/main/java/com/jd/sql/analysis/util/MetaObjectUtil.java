@@ -9,9 +9,9 @@ import org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory;
 import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
 
 /**
- * @Author huhaitao21
- * @Description MetaObject包装mybatis 反射工具类
- * @Date 19:53 2022/11/1
+ * @author huhaitao21
+ *  MetaObject包装mybatis 反射工具类
+ *  19:53 2022/11/1
  **/
 public class MetaObjectUtil {
     private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
@@ -22,7 +22,7 @@ public class MetaObjectUtil {
     /**
      * MetaObject 对象实例化
      * @param object
-     * @return
+     * @return 分析对象
      */
     public static MetaObject forObject(Object object) {
         return MetaObject.forObject(object, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, DEFAULT_REFLECTOR_FACTORY);

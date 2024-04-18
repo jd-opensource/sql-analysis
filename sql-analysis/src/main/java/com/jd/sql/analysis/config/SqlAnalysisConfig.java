@@ -13,9 +13,9 @@ import java.util.List;
 import java.util.Properties;
 
 /**
- * @Author huhaitao21
- * @Description sql 分析组件配置类
- * @Date 19:36 2022/11/3
+ * @author huhaitao21
+ *  sql 分析组件配置类
+ *  19:36 2022/11/3
  **/
 public class SqlAnalysisConfig {
 

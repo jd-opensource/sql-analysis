@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.rule;
 
 /**
- * @Author huhaitao21
- * @Description 匹配列
- * @Date 15:50 2022/11/9
+ * @author huhaitao21
+ *  匹配列
+ *  15:50 2022/11/9
  **/
 public enum MatchColumn {
     SELECT_TYPE("selectType"),

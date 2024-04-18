@@ -7,9 +7,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Properties;
 
 /**
- * @Author huhaitao21
- * @Description jmq相关配置
- * @Date 18:20 2023/2/9
+ * @author huhaitao21
+ *  jmq相关配置
+ *  18:20 2023/2/9
  **/
 public class JmqConfig {
     private static Logger  logger = LoggerFactory.getLogger(JmqConfig.class);

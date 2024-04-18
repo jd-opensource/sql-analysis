@@ -15,9 +15,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description sql 分析模块
- * @Date 10:55 2022/11/7
+ * @author huhaitao21
+ *  sql 分析模块
+ *  10:55 2022/11/7
  **/
 public class SqlAnalysis {
 
@@ -30,7 +30,9 @@ public class SqlAnalysis {
 
     /**
      * sql 分析
-     * @return
+     * @param connection 数据库连接
+     * @param sqlExtractResult 提取结果
+     * @return SqlAnalysisResultList 分析结果集合
      */
     public static SqlAnalysisResultList analysis(SqlExtractResult sqlExtractResult, Connection connection){
         if(sqlExtractResult==null){
@@ -77,7 +79,7 @@ public class SqlAnalysis {
     /**
      * 分析结果转换 分析结果dto
      * @param resultSet
-     * @return
+     * 
      */
     private static SqlAnalysisResult convertSqlAnalysisResultDto(ResultSet resultSet) {
         SqlAnalysisResult sqlAnalysisResult = new SqlAnalysisResult();
@@ -126,7 +128,7 @@ public class SqlAnalysis {
     /**
      * 获取sql分析语句
      * @param sql 拦截前的sql
-     * @return
+     * 
      */
     private static String getAnalysisSql(String sql) {
         sql = "explain " + sql;
@@ -137,7 +139,7 @@ public class SqlAnalysis {
      * 判断查询结果集中是否存在某列
      * @param rs 查询结果集
      * @param columnName 列名
-     * @return true 存在; false 不存咋
+     * @return 分析对象 true 存在; false 不存咋
      */
     public boolean isExistColumn(ResultSet rs, String columnName) {
         try {

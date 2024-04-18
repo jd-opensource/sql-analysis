@@ -10,9 +10,9 @@ import org.slf4j.LoggerFactory;
 import java.util.Arrays;
 
 /**
- * @Author huhaitao21
- * @Description sql替换模块
- * @Date 14:25 2023/6/1
+ * @author huhaitao21
+ *  sql替换模块
+ *  14:25 2023/6/1
  **/
 public class SqlReplace {
 
@@ -47,7 +47,7 @@ public class SqlReplace {
      * 替换sql，生成新的 MappedStatement
      * @param ms
      * @param newSqlSource
-     * @return
+     * @return 分析对象
      */
     private static MappedStatement copyFromMappedStatement(MappedStatement ms, SqlSource newSqlSource) {
         MappedStatement.Builder builder = new MappedStatement.Builder(ms.getConfiguration(), ms.getId(), newSqlSource, ms.getSqlCommandType());

@@ -5,9 +5,9 @@ import org.slf4j.LoggerFactory;
 
 
 /**
- * @Author huhaitao21
- * @Description ducc监听工具类
- * @Date 15:34 2023/5/25
+ * @author huhaitao21
+ *  ducc监听工具类
+ *  15:34 2023/5/25
  **/
 public class DuccMonitorUtil {
 
@@ -17,7 +17,7 @@ public class DuccMonitorUtil {
     /**
      * 启动监控
      * @param appName jone或者jdos应用名称
-     * @param uri uri格式详解参见：https://git.jd.com/laf/laf-config/wikis/客户端使用指南->UCC配置服务
+     * @param uri uri格式详解参见
      * @param moniterKey 存储sql替换配置的key
      */
     public static void start(String appName,String uri,String moniterKey){
@@ -61,7 +61,7 @@ public class DuccMonitorUtil {
 
     /**
      * 获取ducc配置
-     * @return
+     * @return 分析对象
      */
     public static String getDuccConfig(){
         return duccConfig;

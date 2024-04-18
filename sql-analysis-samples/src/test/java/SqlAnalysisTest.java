@@ -7,9 +7,9 @@ import org.junit.Test;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description SqlAnalysisTest
- * @Date 19:13 2022/11/10
+ * @author huhaitao21
+ *  SqlAnalysisTest
+ *  19:13 2022/11/10
  **/
 public class SqlAnalysisTest {
 

@@ -12,9 +12,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @Author huhaitao21
- * @Description 采用规则引擎计算评分实现方式
- * @Date 20:43 2022/11/1
+ * @author huhaitao21
+ *  采用规则引擎计算评分实现方式
+ *  20:43 2022/11/1
  **/
 public class SqlScoreServiceRulesEngine implements SqlScoreService {
 

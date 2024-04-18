@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Objects;
 
 /**
- * @Author huhaitao21
- * @Description sql替换配置
- * @Date 18:50 2023/5/25
+ * @author huhaitao21
+ *  sql替换配置
+ *  18:50 2023/5/25
  **/
 public class SqlReplaceConfig {
 
@@ -40,7 +40,7 @@ public class SqlReplaceConfig {
     /**
      * 根据sqlid 获取替换sql
      * @param sqlId
-     * @return
+     * @return 分析对象
      */
     public static String getReplaceSqlBySqlId(String sqlId){
         if(StringUtils.isNotBlank(sqlId) && Objects.nonNull(sqlReplaceMap)){
@@ -51,7 +51,7 @@ public class SqlReplaceConfig {
 
     /**
      * 获取sql替换映射对象
-     * @return
+     * @return 分析对象
      */
     public static HashMap<String, String> getSqlReplaceMap() {
         return sqlReplaceMap;

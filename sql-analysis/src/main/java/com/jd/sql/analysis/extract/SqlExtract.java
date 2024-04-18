@@ -28,9 +28,9 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 
 /**
- * @Author huhaitao21
- * @Description 待分析sql提取器
- * @Date 9:57 2022/11/7
+ * @author huhaitao21
+ *  待分析sql提取器
+ *  9:57 2022/11/7
  **/
 public class SqlExtract {
 
@@ -44,7 +44,7 @@ public class SqlExtract {
     /**
      * 提取完整sql
      * @param statementHandler
-     * @return
+
      */
     public static SqlExtractResult extract(StatementHandler statementHandler){
 
@@ -93,7 +93,7 @@ public class SqlExtract {
 
     /**
      * 是否需要分析
-     * @return
+
      */
     private static boolean  needAnalysis(String sqlId,String sqlType){
         //判断检查类型
@@ -137,7 +137,6 @@ public class SqlExtract {
      * 进行？的替换
      * @param configuration
      * @param boundSql
-     * @return
      */
     private static String showSql(Configuration configuration, BoundSql boundSql) {
         // 获取参数
@@ -176,7 +175,7 @@ public class SqlExtract {
     /**
      * 如果参数是String，则添加单引号， 如果是日期，则转换为时间格式器并加单引号； 对参数是null和不是null的情况作了处理
      * @param obj
-     * @return
+     *
      */
     private static String getParameterValue(Object obj)
     {

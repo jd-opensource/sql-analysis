@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.util;
 
 /**
- * @Author huhaitao21
- * @Description //TODO
- * @Date 20:06 2023/3/16
+ * @author huhaitao21
+ *  //TODO
+ *  20:06 2023/3/16
  **/
 public enum MysqlVersion {
 

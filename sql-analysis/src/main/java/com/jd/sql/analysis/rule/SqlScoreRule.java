@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.rule;
 
 /**
- * @Author huhaitao21
- * @Description 评分规则
- * @Date 15:13 2022/11/9
+ * @author huhaitao21
+ *  评分规则
+ *  15:13 2022/11/9
  **/
 public class SqlScoreRule {
 

@@ -1,9 +1,9 @@
 package com.jd.sql.analysis.rule;
 
 /**
- * @Author huhaitao21
- * @Description 匹配类型
- * @Date 15:50 2022/11/9
+ * @author huhaitao21
+ *  匹配类型
+ *  15:50 2022/11/9
  **/
 public enum MatchType {
     EQUAL("等于"),

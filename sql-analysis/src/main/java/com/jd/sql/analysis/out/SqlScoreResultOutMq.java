@@ -5,9 +5,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @Author huhaitao21
- * @Description 分析结果存储到表
- * @Date 17:24 2022/11/7
+ * @author huhaitao21
+ *  分析结果存储到表
+ *  17:24 2022/11/7
  **/
 public class SqlScoreResultOutMq implements SqlScoreResultOutService {
 
