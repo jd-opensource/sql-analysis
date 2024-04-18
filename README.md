@@ -78,7 +78,7 @@ Mybatis-SQL分析组件
 
 ```
 <dependency>
-    <groupId>com.jd.sql.analysis</groupId>
+    <groupId>io.github.huht123.sql-analysis</groupId>
     <artifactId>sql-analysis</artifactId>
     <version>1.0</version>
 </dependency>
