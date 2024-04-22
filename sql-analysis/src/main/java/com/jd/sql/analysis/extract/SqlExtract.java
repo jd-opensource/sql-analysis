@@ -51,6 +51,13 @@ public class SqlExtract {
         //MetaObjectUtil 通过mybatis 反射工具类，从入参提取相关对象
         //提取 PreparedStatementHandler ，用于提取 MappedStatement
         MetaObject delegateMetaObject = MetaObjectUtil.forObject(statementHandler);
+
+        boolean hasGetter = delegateMetaObject.hasGetter("h");
+
+        if (hasGetter) {
+            delegateMetaObject = MetaObjectUtil.forObject(delegateMetaObject.getValue("h"));
+            delegateMetaObject = MetaObjectUtil.forObject(delegateMetaObject.getValue("target"));
+        }
         if(delegateMetaObject.getValue("delegate")==null){
             logger.warn("sql analysis get delegate null error,{}", GsonUtil.bean2Json(statementHandler.getBoundSql()));
             return null;
