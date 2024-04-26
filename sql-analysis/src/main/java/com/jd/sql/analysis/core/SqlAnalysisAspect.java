@@ -19,16 +19,24 @@ import com.jd.sql.analysis.score.SqlScoreResult;
 import com.jd.sql.analysis.score.SqlScoreService;
 import com.jd.sql.analysis.score.SqlScoreServiceRulesEngine;
 import com.jd.sql.analysis.util.GsonUtil;
+import org.apache.commons.lang3.BooleanUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.executor.Executor;
 import org.apache.ibatis.executor.statement.StatementHandler;
 import org.apache.ibatis.mapping.MappedStatement;
-import org.apache.ibatis.plugin.*;
+import org.apache.ibatis.plugin.Interceptor;
+import org.apache.ibatis.plugin.Intercepts;
+import org.apache.ibatis.plugin.Invocation;
+import org.apache.ibatis.plugin.Plugin;
+import org.apache.ibatis.plugin.Signature;
+import org.apache.ibatis.reflection.MetaObject;
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.apache.ibatis.session.ResultHandler;
 import org.apache.ibatis.session.RowBounds;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.lang.reflect.Proxy;
 import java.sql.Connection;
 import java.util.Properties;
 
@@ -80,7 +88,22 @@ public class SqlAnalysisAspect implements Interceptor {
             }else if(SqlAnalysisConfig.getAnalysisSwitch()  && firstArg instanceof Connection){
                 //sql 分析模块
                 //获取入参statement
-                StatementHandler statementHandler = (StatementHandler)invocation.getTarget();
+                Object expectedStatementHandler = invocation.getTarget();
+                while (Proxy.isProxyClass(expectedStatementHandler.getClass())) {
+                    MetaObject metaObject = SystemMetaObject.forObject(expectedStatementHandler);
+                    //fastReturn
+                    if (BooleanUtils.isNotTrue(metaObject.hasGetter("h.target"))) {
+                        logger.error("cant find mappedStatement h.get method");
+                        break;
+                    }
+                    expectedStatementHandler = metaObject.getValue("h.target");
+                }
+                //failFast
+                if (!(expectedStatementHandler instanceof StatementHandler)) {
+                    logger.error("expectedStatementHandler not instanceof StatementHandler!");
+                    return invocation.proceed();
+                }
+                StatementHandler statementHandler = (StatementHandler)expectedStatementHandler;
 
                 //提取待执行的完整sql语句
                 SqlExtractResult sqlExtractResult = SqlExtract.extract(statementHandler);
