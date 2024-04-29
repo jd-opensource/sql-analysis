@@ -100,6 +100,7 @@ Mybatis-SQL分析组件
     </plugins>
 </configuration>
 ```
+注意：如果使用了多个mybatis组件，建议把该组件放在最前面，防止其它组件对mybatis相关对象进行二次包装，无法获取对应的数据
 
 ## 3、核心配置项
 
