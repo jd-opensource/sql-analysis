@@ -109,7 +109,7 @@ public class KeyNodeLogUtil {
         try {
             sendMessage(JmqConfig.getTopic(), model.getBusinessId(),content);
         } catch (Exception e) {
-            log.error("sql analysis out mq error" + model.getBusinessId(),e);
+		        log.error("sql analysis out mq error{}", model.getBusinessId(), e);
         }
     }
 

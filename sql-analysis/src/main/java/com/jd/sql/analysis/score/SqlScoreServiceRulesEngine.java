@@ -54,7 +54,7 @@ public class SqlScoreServiceRulesEngine implements SqlScoreService {
         scoreResult.setScore(score);
         scoreResult.setAnalysisResults(analysisResults);
 
-        logger.info("sql analysis result = " + GsonUtil.bean2Json(scoreResult));
+		    logger.info("sql analysis result = {}", GsonUtil.bean2Json(scoreResult));
         return scoreResult;
     }
 

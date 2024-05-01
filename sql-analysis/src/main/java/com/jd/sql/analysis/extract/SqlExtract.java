@@ -83,7 +83,7 @@ public class SqlExtract {
         Configuration cOnfiguration= mappedStatement.getConfiguration();
         // 获取到最终的sql语句
         String sql = getSql(cOnfiguration, boundSql);
-        logger.info("sql analysis sql = " + sql);
+		    logger.info("sql analysis sql = {}", sql);
 
         SqlExtractResult result = new SqlExtractResult();
         result.setSqlId(sqlId);

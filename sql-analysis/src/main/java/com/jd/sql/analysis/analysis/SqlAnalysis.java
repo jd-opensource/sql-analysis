@@ -67,7 +67,7 @@ public class SqlAnalysis {
                 e.printStackTrace();
             }
         }
-        logger.info("sql analysis result = " + GsonUtil.bean2Json(sqlAnalysisResutlDto));
+		    logger.info("sql analysis result = {}", GsonUtil.bean2Json(sqlAnalysisResutlDto));
         SqlAnalysisResultList sqlAnalysisResultList = new SqlAnalysisResultList();
         sqlAnalysisResultList.setResultList(resultList);
         return sqlAnalysisResultList;
