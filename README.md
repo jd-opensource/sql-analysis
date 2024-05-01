@@ -65,7 +65,7 @@ Mybatis-SQL分析组件
 
 ## 1、引入依赖jar包
 
-```
+```xml
 <dependency>
     <groupId>io.github.huht123.sql-analysis</groupId>
     <artifactId>sql-analysis</artifactId>
@@ -75,7 +75,7 @@ Mybatis-SQL分析组件
 
 ## 2、配置组件xml
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -110,7 +110,7 @@ Mybatis-SQL分析组件
 
 ### 1、慢sql分析-日志输出+关键词告警
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -122,7 +122,7 @@ Mybatis-SQL分析组件
 
 ### 2、慢sql分析-日志输出+mq输出+es存储+Kibana分析
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -139,7 +139,7 @@ Mybatis-SQL分析组件
 
 ### 3、慢sql替换-配置动态更新sql语句
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -192,4 +192,3 @@ Mybatis-SQL分析组件
 # 欢迎共同改进和使用咨询
 
 扈海涛（huhaitao21@jd.com)
-
