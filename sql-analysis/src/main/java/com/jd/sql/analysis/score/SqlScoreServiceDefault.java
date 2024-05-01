@@ -45,6 +45,10 @@ public class SqlScoreServiceDefault implements SqlScoreService {
         }
 
         //综合评分计算
+        return getSqlScoreResult(score, scoreResult, analysisResults, WARN_SCORE, logger);
+    }
+
+    static SqlScoreResult getSqlScoreResult(int score, SqlScoreResult scoreResult, List<SqlScoreResultDetail> analysisResults, Integer warnScore, Logger logger) {
         for (SqlScoreResultDetail detail : analysisResults) {
             score = score - detail.getScoreDeduction();
             if (score < 0) {
@@ -52,12 +56,12 @@ public class SqlScoreServiceDefault implements SqlScoreService {
                 score = 0;
             }
 
-		        scoreResult.setNeedWarn(score < WARN_SCORE);
+		        scoreResult.setNeedWarn(score < warnScore);
         }
         scoreResult.setScore(score);
         scoreResult.setAnalysisResults(analysisResults);
 
-		    logger.info("sql analysis result = {}", GsonUtil.bean2Json(scoreResult));
+        logger.info("sql analysis result = {}", GsonUtil.bean2Json(scoreResult));
         return scoreResult;
     }
 

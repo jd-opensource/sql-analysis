@@ -42,20 +42,7 @@ public class SqlScoreServiceRulesEngine implements SqlScoreService {
         }
 
         //综合评分计算
-        for (SqlScoreResultDetail detail : analysisResults) {
-            score = score - detail.getScoreDeduction();
-            if (score < 0) {
-                //防止出现负分
-                score = 0;
-            }
-
-		        scoreResult.setNeedWarn(score < WARN_SCORE);
-        }
-        scoreResult.setScore(score);
-        scoreResult.setAnalysisResults(analysisResults);
-
-		    logger.info("sql analysis result = {}", GsonUtil.bean2Json(scoreResult));
-        return scoreResult;
+        return getSqlScoreResult(score, scoreResult, analysisResults, WARN_SCORE, logger);
     }
 
     private List<SqlScoreResultDetail> matchRuleEngine(SqlAnalysisResult result) {
