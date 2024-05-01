@@ -10,6 +10,6 @@ public interface SqlScoreRuleLoader {
     /**
      * 加载评分规则
      */
-    public boolean loadScoreRule();
+    boolean loadScoreRule();
 
 }

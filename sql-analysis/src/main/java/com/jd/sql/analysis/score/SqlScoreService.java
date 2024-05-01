@@ -14,6 +14,6 @@ public interface SqlScoreService {
      * @param sqlAnalysisResutlDto
      * @return
      */
-    public SqlScoreResult score(SqlAnalysisResultList sqlAnalysisResutlDto);
+    SqlScoreResult score(SqlAnalysisResultList sqlAnalysisResutlDto);
 
 }
