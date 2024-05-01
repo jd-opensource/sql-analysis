@@ -14,18 +14,19 @@ import org.apache.ibatis.reflection.wrapper.ObjectWrapperFactory;
  * @Date 19:53 2022/11/1
  **/
 public class MetaObjectUtil {
-    private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
-    private static final ObjectWrapperFactory DEFAULT_OBJECT_WRAPPER_FACTORY = new DefaultObjectWrapperFactory();
-    private static final ReflectorFactory DEFAULT_REFLECTOR_FACTORY = new DefaultReflectorFactory();
+		private static final ObjectFactory DEFAULT_OBJECT_FACTORY = new DefaultObjectFactory();
+		private static final ObjectWrapperFactory DEFAULT_OBJECT_WRAPPER_FACTORY = new DefaultObjectWrapperFactory();
+		private static final ReflectorFactory DEFAULT_REFLECTOR_FACTORY = new DefaultReflectorFactory();
 
 
-    /**
-     * MetaObject 对象实例化
-     * @param object
-     * @return
-     */
-    public static MetaObject forObject(Object object) {
-        return MetaObject.forObject(object, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, DEFAULT_REFLECTOR_FACTORY);
-    }
+		/**
+		 * MetaObject 对象实例化
+		 *
+		 * @param object
+		 * @return
+		 */
+		public static MetaObject forObject(Object object) {
+				return MetaObject.forObject(object, DEFAULT_OBJECT_FACTORY, DEFAULT_OBJECT_WRAPPER_FACTORY, DEFAULT_REFLECTOR_FACTORY);
+		}
 
 }

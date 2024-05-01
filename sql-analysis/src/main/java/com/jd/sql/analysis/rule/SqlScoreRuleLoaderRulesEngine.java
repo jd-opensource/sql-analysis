@@ -9,13 +9,8 @@ import org.slf4j.LoggerFactory;
  * @Date 20:43 2022/11/1
  **/
 public class SqlScoreRuleLoaderRulesEngine implements SqlScoreRuleLoader {
-
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreRuleLoaderRulesEngine.class);
-
-
-    @Override
-    public boolean loadScoreRule() {
-        return RulesEngineExecutor.refresh();
-    }
-
+		@Override
+		public boolean loadScoreRule() {
+				return RulesEngineExecutor.refresh();
+		}
 }

@@ -10,8 +10,6 @@ Mybatis-SQL分析组件
 
 **2、线上出现慢sql后，无法快速止损**
 
-
-
 # 解决思路
 
 **1、把问题解决在上线之前，最好的办法就是在测试阶段，甚至在开发阶段就发现一个sql的好坏**
@@ -20,25 +18,18 @@ Mybatis-SQL分析组件
 
 部门内部，目前大部分数据库框架采用的mybatis，然后基于mybatis本身的实现机制中，开发一个mybatis组件，可以自动对运行的sql进行提取和分析，定制一套默认的分析规则，让sql在开发环境和测试环境执行的时候，就能够做初步的评估，把有问题的慢sql在这个阶段暴露出来；同时具备sql替换功能，在线上出现问题sql的时候，可以通过ducc配置快速完成对一个sql的在线替换，大大降低线上问题的止损时间。
 
-
-
 # 开源方案调研
 
-目前，主流的sql分析组件，核心功能主要放在了两个方向：1、慢sql的分析和优化建议  2、sql的优化重写功能，而且主要偏运维的辅助功能无法做到无侵入的和应用代码进行集成。也就无法实现我们的核心痛点，慢sql提前分析预警和动态sql替换。
+目前，主流的sql分析组件，核心功能主要放在了两个方向：1、慢sql的分析和优化建议
+2、sql的优化重写功能，而且主要偏运维的辅助功能无法做到无侵入的和应用代码进行集成。也就无法实现我们的核心痛点，慢sql提前分析预警和动态sql替换。
 
 ![img](https://github.com/huht123/sql-analysis-img/blob/main/%E5%AF%B9%E6%AF%94%E5%9B%BE.png)
-
-
 
 # 设计方案
 
 **核心功能：SQL分析预警能力、SQL替换能力**
 
-
-
 ![img](https://github.com/huht123/sql-analysis-img/blob/main/%E8%AE%BE%E8%AE%A1%E5%9B%BE.png)
-
-
 
 # 详细设计
 
@@ -74,9 +65,7 @@ Mybatis-SQL分析组件
 
 ## 1、引入依赖jar包
 
-
-
-```
+```xml
 <dependency>
     <groupId>io.github.huht123.sql-analysis</groupId>
     <artifactId>sql-analysis</artifactId>
@@ -86,7 +75,7 @@ Mybatis-SQL分析组件
 
 ## 2、配置组件xml
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -100,28 +89,28 @@ Mybatis-SQL分析组件
     </plugins>
 </configuration>
 ```
+
 注意：如果使用了多个mybatis组件，建议把该组件放在最前面，防止其它组件对mybatis相关对象进行二次包装，无法获取对应的数据
 
 ## 3、核心配置项
 
-| 属性                  | 用途                                       | 是否必填 | 默认值             | 备注                        |
-| --------------------- | ------------------------------------------ | -------- | ------------------ | --------------------------- |
-| analysisSwitch        | 是否开启分析功能                           | 是       | false              |                             |
-| onlyCheckOnce         | 是否对一个sqlid只分析一次                  | 非       | true               |                             |
-| checkInterval         | 每个sqlid分析间隔                          | 非       | 300000毫秒         | onlyCheckOnce 为false才生效 |
-| exceptSqlIds          | 需要过滤不分析的sqlid                      | 非       |                    |                             |
-| sqlType               | 分析的sql类型                              | 非       | 默认select、update | 支持                        |
-| scoreRuleLoadClass    | 评分规则加载器，用于扩展自定义规则         | 非       |                    |                             |
-| outModel              | 默认输出方式                               | 非       | 默认值：LOG        | 支持LOG、MQ两种方式         |
-| outputClass           | 评分结果输出类，用于扩展自定义结果输出方式 | 非       |                    |                             |
-| sqlReplaceModelSwitch | sql替换模块是否开启                        | 非       | 默认 false         |                             |
-
+| 属性                    | 用途                    | 是否必填 | 默认值             | 备注                      |
+|-----------------------|-----------------------|------|-----------------|-------------------------|
+| analysisSwitch        | 是否开启分析功能              | 是    | false           |                         |
+| onlyCheckOnce         | 是否对一个sqlid只分析一次       | 非    | true            |                         |
+| checkInterval         | 每个sqlid分析间隔           | 非    | 300000毫秒        | onlyCheckOnce 为false才生效 |
+| exceptSqlIds          | 需要过滤不分析的sqlid         | 非    |                 |                         |
+| sqlType               | 分析的sql类型              | 非    | 默认select、update | 支持                      |
+| scoreRuleLoadClass    | 评分规则加载器，用于扩展自定义规则     | 非    |                 |                         |
+| outModel              | 默认输出方式                | 非    | 默认值：LOG         | 支持LOG、MQ两种方式            |
+| outputClass           | 评分结果输出类，用于扩展自定义结果输出方式 | 非    |                 |                         |
+| sqlReplaceModelSwitch | sql替换模块是否开启           | 非    | 默认 false        |                         |
 
 ## 4、实践使用方案
 
 ### 1、慢sql分析-日志输出+关键词告警
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -131,10 +120,9 @@ Mybatis-SQL分析组件
 </configuration>
 ```
 
-
 ### 2、慢sql分析-日志输出+mq输出+es存储+Kibana分析
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -144,14 +132,14 @@ Mybatis-SQL分析组件
     </plugins>
 </configuration>
 ```
+
 实现该接口，自定义输出方式（需要自己保证输出性能，可以采用异步队列）
 
     com.jd.sql.analysis.out.SqlScoreResultOutService
 
-
 ### 3、慢sql替换-配置动态更新sql语句
 
-```
+```xml
 <configuration>
     <plugins>
         <plugin interceptor="com.jd.sql.analysis.core.SqlAnalysisAspect" >
@@ -160,13 +148,12 @@ Mybatis-SQL分析组件
     </plugins>
 </configuration>
 ```
+
 可以集成自己环境的配置中心，通过如下方法或者映射map动态更新
 
     com.jd.sql.analysis.replace.SqlReplaceConfig.getSqlReplaceMap
 
 注意：功能正式修复后，需去掉该配置，该功能仅供应急处理线上问题，不建议作为功能长期使用
-
-
 
 # 性能测试
 
@@ -182,15 +169,11 @@ Mybatis-SQL分析组件
 
 基本无影响
 
-
-
 # 适用场景
 
 1、慢sql预防
 
 2、线上问题止损
-
-
 
 # 优势
 
@@ -202,10 +185,10 @@ Mybatis-SQL分析组件
 
 4、成本：接入成本低，无代码侵入。
 
-
 # 主要贡献者：
+
 扈海涛（huhaitao21@jd.com)、杨超（yangchao341@jd.com）、张泽龙（zhangzelong10@jd.com）
 
 # 欢迎共同改进和使用咨询
-扈海涛（huhaitao21@jd.com)
 
+扈海涛（huhaitao21@jd.com)

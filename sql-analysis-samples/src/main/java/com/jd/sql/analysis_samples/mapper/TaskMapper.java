@@ -8,11 +8,11 @@ import java.util.List;
 public interface TaskMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(Task record);
+    int insert(Task task);
 
     Task selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKey(Task record);
+    int updateByPrimaryKey(Task task);
 
     /**
      * 通过实体作为筛选条件查询

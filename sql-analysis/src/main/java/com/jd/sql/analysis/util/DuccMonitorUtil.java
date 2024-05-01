@@ -1,5 +1,6 @@
 package com.jd.sql.analysis.util;
 
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,18 +12,26 @@ import org.slf4j.LoggerFactory;
  **/
 public class DuccMonitorUtil {
 
-    private static Logger log = LoggerFactory.getLogger(DuccMonitorUtil.class);
-    private static String duccConfig = "";
+		private static final Logger log = LoggerFactory.getLogger(DuccMonitorUtil.class);
+		/**
+		 * -- GETTER --
+		 * 获取ducc配置
+		 *
+		 * @return
+		 */
+		@Getter
+		private static final String duccConfig = "";
 
-    /**
-     * 启动监控
-     * @param appName jone或者jdos应用名称
-     * @param uri uri格式详解参见：https://git.jd.com/laf/laf-config/wikis/客户端使用指南->UCC配置服务
-     * @param moniterKey 存储sql替换配置的key
-     */
-    public static void start(String appName,String uri,String moniterKey){
-        try{
-            //todo 配置中心监听
+		/**
+		 * 启动监控
+		 *
+		 * @param appName    jone或者jdos应用名称
+		 * @param uri        uri格式详解参见：https://git.jd.com/laf/laf-config/wikis/客户端使用指南->UCC配置服务
+		 * @param moniterKey 存储sql替换配置的key
+		 */
+		public static void start(String appName, String uri, String moniterKey) {
+				try {
+						//todo 配置中心监听
 //            //创建ConfiguratorManager 实例，有1个就可以
 //            ConfiguratorManager configuratorManager = ConfiguratorManager.getInstance() ;
 //            //设置appName，jone或者jdos部署可自动获取，无需配置
@@ -53,18 +62,10 @@ public class DuccMonitorUtil {
 //                    SqlReplaceConfig.initConfig();
 //                }
 //            });
-        }catch (Exception e){
-            log.error("sql analysis ducc 监听启动失败");
-        }
+				} catch (Exception e) {
+						log.error("sql analysis ducc 监听启动失败");
+				}
 
-    }
-
-    /**
-     * 获取ducc配置
-     * @return
-     */
-    public static String getDuccConfig(){
-        return duccConfig;
-    }
+		}
 
 }

@@ -39,123 +39,119 @@ import java.util.Properties;
  * @Date 22:47 2022/10/25
  **/
 @Intercepts({@Signature(
-    type = StatementHandler.class,
-    method = "prepare",
-    args = {Connection.class, Integer.class}
+				type = StatementHandler.class,
+				method = "prepare",
+				args = {Connection.class, Integer.class}
 ), @Signature(
-    type = Executor.class,
-    method = "update",
-    args = {MappedStatement.class, Object.class}
-),@Signature(
-    type = Executor.class,
-    method = "query",
-    args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
+				type = Executor.class,
+				method = "update",
+				args = {MappedStatement.class, Object.class}
+), @Signature(
+				type = Executor.class,
+				method = "query",
+				args = {MappedStatement.class, Object.class, RowBounds.class, ResultHandler.class}
 )})
 public class SqlAnalysisAspect implements Interceptor {
 
-    Logger logger = LoggerFactory.getLogger(SqlAnalysisAspect.class);
+		/**
+		 * 评分规则服务
+		 */
+		private static final SqlScoreService sqlScoreService = new SqlScoreServiceRulesEngine();
+		/**
+		 * 评分结果输出服务
+		 */
+		private static SqlScoreResultOutService sqlScoreResultOut = new SqlScoreResultOutServiceDefault();
+		final Logger logger = LoggerFactory.getLogger(SqlAnalysisAspect.class);
 
-    /**
-     * 评分规则服务
-     */
-    private static SqlScoreService sqlScoreService = new SqlScoreServiceRulesEngine();
+		@Override
+		public Object intercept(Invocation invocation) throws Throwable {
+				try {
+						Object firstArg = invocation.getArgs()[0];
 
-    /**
-     * 评分结果输出服务
-     */
-    private static SqlScoreResultOutService sqlScoreResultOut = new SqlScoreResultOutServiceDefault();
+						if (SqlAnalysisConfig.getSqlReplaceModelSwitch() != null && SqlAnalysisConfig.getSqlReplaceModelSwitch() && firstArg instanceof MappedStatement) {
+								//sql替换模块
+								MappedStatement mappedStatement = (MappedStatement) firstArg;
+								String replaceSql = SqlReplaceConfig.getReplaceSqlBySqlId(mappedStatement.getId());
+								if (StringUtils.isNotBlank(replaceSql)) {
+										SqlReplace.replace(invocation, replaceSql);
+								}
+						} else if (SqlAnalysisConfig.getAnalysisSwitch() && firstArg instanceof Connection) {
+								//sql 分析模块
+								//获取入参statement
+								StatementHandler statementHandler = (StatementHandler) invocation.getTarget();
 
-    @Override
-    public Object intercept(Invocation invocation) throws Throwable {
-        try {
-            Object firstArg = invocation.getArgs()[0];
+								//提取待执行的完整sql语句
+								SqlExtractResult sqlExtractResult = SqlExtract.extract(statementHandler);
+								if (sqlExtractResult != null) {
+										//对sql进行分析
+										Connection connection = (Connection) invocation.getArgs()[0];
+										SqlAnalysisResultList resultList = SqlAnalysis.analysis(sqlExtractResult, connection);
 
-            if(SqlAnalysisConfig.getSqlReplaceModelSwitch()!=null && SqlAnalysisConfig.getSqlReplaceModelSwitch() && firstArg instanceof MappedStatement){
-                //sql替换模块
-                MappedStatement mappedStatement = (MappedStatement)firstArg;
-                String replaceSql = SqlReplaceConfig.getReplaceSqlBySqlId(mappedStatement.getId());
-                if(StringUtils.isNotBlank(replaceSql)){
-                    SqlReplace.replace(invocation,replaceSql);
-                }
-            }else if(SqlAnalysisConfig.getAnalysisSwitch()  && firstArg instanceof Connection){
-                //sql 分析模块
-                //获取入参statement
-                StatementHandler statementHandler = (StatementHandler)invocation.getTarget();
+										//对分析结果进行评估
+										SqlScoreResult sqlScoreResult = sqlScoreService.score(resultList);
+										if (sqlScoreResult != null) {
+												sqlScoreResult.setSqlId(sqlExtractResult.getSqlId());
+												sqlScoreResult.setSourceSql(sqlExtractResult.getSourceSql());
 
-                //提取待执行的完整sql语句
-                SqlExtractResult sqlExtractResult = SqlExtract.extract(statementHandler);
-                if(sqlExtractResult!=null){
-                    //对sql进行分析
-                    Connection connection = (Connection)invocation.getArgs()[0];
-                    SqlAnalysisResultList resultList  =  SqlAnalysis.analysis(sqlExtractResult,connection);
+												//输出评分结果
+												sqlScoreResultOut.outResult(sqlScoreResult);
+										} else {
+												logger.error("sql analysis score error {},{}", GsonUtil.bean2Json(resultList), GsonUtil.bean2Json(sqlExtractResult));
+										}
+								}
+						}
+				} catch (Exception e) {
+						logger.error("sql analysis error ", e);
+				}
+				// 执行完上面的任务后，不改变原有的sql执行过程
+				return invocation.proceed();
+		}
 
-                    //对分析结果进行评估
-                    SqlScoreResult sqlScoreResult = sqlScoreService.score(resultList);
-                    if(sqlScoreResult!=null){
-                        sqlScoreResult.setSqlId(sqlExtractResult.getSqlId());
-                        sqlScoreResult.setSourceSql(sqlExtractResult.getSourceSql());
+		@Override
+		public Object plugin(Object target) {
+				return Plugin.wrap(target, this);
+		}
 
-                        //输出评分结果
-                        sqlScoreResultOut.outResult(sqlScoreResult);
-                    }else{
-                        logger.error("sql analysis score error {},{}", GsonUtil.bean2Json(resultList),GsonUtil.bean2Json(sqlExtractResult));
-                    }
-                }
-            }
-        }catch (Exception e) {
-            logger.error("sql analysis error ",e);
-        }
-        // 执行完上面的任务后，不改变原有的sql执行过程
-        return invocation.proceed();
-    }
+		@Override
+		public void setProperties(Properties properties) {
+				//初始化配置
+				SqlAnalysisConfig.init(properties);
 
-    @Override
-    public Object plugin(Object target) {
-        return Plugin.wrap(target, this);
-    }
-
-    @Override
-    public void setProperties(Properties properties) {
-        //初始化配置
-        SqlAnalysisConfig.init(properties);
-
-        //初始化评分规则
-        SqlScoreRuleLoader sqlScoreRuleLoader = new SqlScoreRuleLoaderRulesEngine();
-        if(StringUtils.isNotBlank(SqlAnalysisConfig.getScoreRuleLoadClass())){
-            try {
-                sqlScoreRuleLoader = (SqlScoreRuleLoader)Class.forName(SqlAnalysisConfig.getScoreRuleLoadClass()).newInstance();
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("sql analysis init score mode error",e);
-            }
-        }
-        boolean loadScoreRuleRes= sqlScoreRuleLoader.loadScoreRule();
-        if(!loadScoreRuleRes){
-            logger.error("sql analysis loadScoreRule exception");
-        }
-        //初始化输出服务
-        //mq方式输出
-        if(StringUtils.isNotBlank(SqlAnalysisConfig.getOutputModel()) && SqlAnalysisConfig.getOutputModel().toUpperCase().equals(OutModelEnum.MQ.getModelType())){
-            try {
-                boolean result = JmqConfig.initMqProducer();
-                if(result){
-                    SqlScoreResultOutService outServiceClass = new SqlScoreResultOutMq();
-                    sqlScoreResultOut = outServiceClass;
-                }
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("sql analysis init mq out mode error",e);
-            }
-        }
-        //自定义方式输出
-        if(StringUtils.isNotBlank(SqlAnalysisConfig.getOutputClass())){
-            try {
-                SqlScoreResultOutService outServiceClass = (SqlScoreResultOutService)Class.forName(SqlAnalysisConfig.getOutputClass()).newInstance();
-                sqlScoreResultOut = outServiceClass;
-            } catch (Exception e) {
-                e.printStackTrace();
-                logger.error("sql analysis init out mode error",e);
-            }
-        }
-    }
+				//初始化评分规则
+				SqlScoreRuleLoader sqlScoreRuleLoader = new SqlScoreRuleLoaderRulesEngine();
+				if (StringUtils.isNotBlank(SqlAnalysisConfig.getScoreRuleLoadClass())) {
+						try {
+								sqlScoreRuleLoader = (SqlScoreRuleLoader) Class.forName(SqlAnalysisConfig.getScoreRuleLoadClass()).newInstance();
+						} catch (Exception e) {
+								e.printStackTrace();
+								logger.error("sql analysis init score mode error", e);
+						}
+				}
+				boolean loadScoreRuleRes = sqlScoreRuleLoader.loadScoreRule();
+				if (!loadScoreRuleRes) {
+						logger.error("sql analysis loadScoreRule exception");
+				}
+				//初始化输出服务
+				//mq方式输出
+				if (StringUtils.isNotBlank(SqlAnalysisConfig.getOutputModel()) && SqlAnalysisConfig.getOutputModel().toUpperCase().equals(OutModelEnum.MQ.getModelType())) {
+						try {
+								boolean result = JmqConfig.initMqProducer();
+								if (result) {
+										sqlScoreResultOut = new SqlScoreResultOutMq();
+								}
+						} catch (Exception e) {
+								e.printStackTrace();
+								logger.error("sql analysis init mq out mode error", e);
+						}
+				}
+				//自定义方式输出
+				if (StringUtils.isNotBlank(SqlAnalysisConfig.getOutputClass())) {
+						try {
+								sqlScoreResultOut = (SqlScoreResultOutService) Class.forName(SqlAnalysisConfig.getOutputClass()).newInstance();
+						} catch (Exception e) {
+								e.printStackTrace();
+								logger.error("sql analysis init out mode error", e);
+						}
+				}
+		}
 }
