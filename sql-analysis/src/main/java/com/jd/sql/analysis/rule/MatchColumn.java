@@ -1,10 +1,15 @@
 package com.jd.sql.analysis.rule;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @Author huhaitao21
  * @Description 匹配列
  * @Date 15:50 2022/11/9
  **/
+@Setter
+@Getter
 public enum MatchColumn {
     SELECT_TYPE("selectType"),
     TABLE("table"),
@@ -27,11 +32,4 @@ public enum MatchColumn {
         this.column = column;
     }
 
-    public String getColumn() {
-        return column;
-    }
-
-    public void setColumn(String column) {
-        this.column = column;
-    }
 }

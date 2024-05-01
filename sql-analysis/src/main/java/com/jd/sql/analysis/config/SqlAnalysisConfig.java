@@ -3,6 +3,7 @@ package com.jd.sql.analysis.config;
 import com.jd.sql.analysis.analysis.SqlAnalysisSqlTypeEnum;
 import com.jd.sql.analysis.rule.SqlScoreRule;
 import com.jd.sql.analysis.util.DuccMonitorUtil;
+import lombok.Getter;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -25,53 +26,63 @@ public class SqlAnalysisConfig {
     /**
      * 分析开关，默认关闭
      */
+    @Getter
     private static Boolean analysisSwitch = false;
 
     /**
      * 一个id 只检查一次，默认开启
      */
+    @Getter
     private static Boolean onlyCheckOnce = true;
 
     /**
      * 两次检查间隔 默认 5分钟
      */
+    @Getter
     private static Long checkInterval = 5 * 60 * 1000L;
 
     /**
      * 例外sql id，集合
      */
+    @Getter
     private static List<String> exceptSqlIds = new ArrayList<>();
 
     /**
      * 进行分析的sql类型
      */
+    @Getter
     private static List<String> sqlType = new ArrayList<>();
 
 
     /**
      * 评分规则加载类， 默认 com.jd.sql.analysis.rule.SqlScoreRuleLoaderDefault
      */
+    @Getter
     private static String scoreRuleLoadClass;
 
     /**
      * 分析结果输出类，默认日志模式 com.jd.sql.analysis.out.SqlScoreResultOutServiceDefault
      */
+    @Getter
     private static String outputModel;
 
     /**
      * 分析结果输出类，默认日志模式 com.jd.sql.analysis.out.SqlScoreResultOutServiceDefault
      */
+    @Getter
     private static String outputClass;
 
 
     /**
      * 应用名称
      */
+    @Getter
     private static String appName;
 
     /**
      * sqlReplaceModelSwitch
      */
+    @Getter
     private static Boolean sqlReplaceModelSwitch;
 
 
@@ -123,6 +134,7 @@ public class SqlAnalysisConfig {
     /**
      * 评分规则列表
      */
+    @Getter
     private static List<SqlScoreRule> ruleList = new ArrayList<>();
 
 
@@ -193,83 +205,39 @@ public class SqlAnalysisConfig {
 
     }
 
-    public static Boolean getAnalysisSwitch() {
-        return analysisSwitch;
-    }
-
-    public static void setAnalysisSwitch(Boolean analysisSwitch) {
+		public static void setAnalysisSwitch(Boolean analysisSwitch) {
         SqlAnalysisConfig.analysisSwitch = analysisSwitch;
     }
 
-    public static Boolean getOnlyCheckOnce() {
-        return onlyCheckOnce;
-    }
-
-    public static void setOnlyCheckOnce(Boolean onlyCheckOnce) {
+		public static void setOnlyCheckOnce(Boolean onlyCheckOnce) {
         SqlAnalysisConfig.onlyCheckOnce = onlyCheckOnce;
     }
 
-    public static Long getCheckInterval() {
-        return checkInterval;
-    }
-
-    public static void setCheckInterval(Long checkInterval) {
+		public static void setCheckInterval(Long checkInterval) {
         SqlAnalysisConfig.checkInterval = checkInterval;
     }
 
-    public static List<String> getExceptSqlIds() {
-        return exceptSqlIds;
-    }
-
-    public static void setExceptSqlIds(List<String> exceptSqlIds) {
+		public static void setExceptSqlIds(List<String> exceptSqlIds) {
         SqlAnalysisConfig.exceptSqlIds = exceptSqlIds;
     }
 
-    public static List<String> getSqlType() {
-        return sqlType;
-    }
-
-    public static void setSqlType(List<String> sqlType) {
+		public static void setSqlType(List<String> sqlType) {
         SqlAnalysisConfig.sqlType = sqlType;
     }
 
-    public static String getScoreRuleLoadClass() {
-        return scoreRuleLoadClass;
-    }
-
-    public static String getOutputClass() {
-        return outputClass;
-    }
-
-    public static List<SqlScoreRule> getRuleList() {
-        return ruleList;
-    }
-
-    public static void setRuleList(List<SqlScoreRule> ruleList) {
+		public static void setRuleList(List<SqlScoreRule> ruleList) {
         SqlAnalysisConfig.ruleList = ruleList;
     }
 
-    public static String getOutputModel() {
-        return outputModel;
-    }
-
-    public static void setOutputModel(String outputModel) {
+		public static void setOutputModel(String outputModel) {
         SqlAnalysisConfig.outputModel = outputModel;
     }
 
-    public static String getAppName() {
-        return appName;
-    }
-
-    public static void setAppName(String appName) {
+		public static void setAppName(String appName) {
         SqlAnalysisConfig.appName = appName;
     }
 
-    public static Boolean getSqlReplaceModelSwitch() {
-        return sqlReplaceModelSwitch;
-    }
-
-    public static void setSqlReplaceModelSwitch(Boolean sqlReplaceModelSwitch) {
+		public static void setSqlReplaceModelSwitch(Boolean sqlReplaceModelSwitch) {
         SqlAnalysisConfig.sqlReplaceModelSwitch = sqlReplaceModelSwitch;
     }
 }

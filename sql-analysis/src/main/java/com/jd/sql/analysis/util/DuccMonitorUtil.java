@@ -1,5 +1,6 @@
 package com.jd.sql.analysis.util;
 
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -12,7 +13,14 @@ import org.slf4j.LoggerFactory;
 public class DuccMonitorUtil {
 
     private static final Logger log = LoggerFactory.getLogger(DuccMonitorUtil.class);
-    private static final String duccConfig = "";
+		/**
+		 * -- GETTER --
+		 *  获取ducc配置
+		 *
+		 * @return
+		 */
+		@Getter
+		private static final String duccConfig = "";
 
     /**
      * 启动监控
@@ -57,14 +65,6 @@ public class DuccMonitorUtil {
             log.error("sql analysis ducc 监听启动失败");
         }
 
-    }
-
-    /**
-     * 获取ducc配置
-     * @return
-     */
-    public static String getDuccConfig(){
-        return duccConfig;
     }
 
 }

@@ -1,10 +1,15 @@
 package com.jd.sql.analysis.out;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @Author huhaitao21
  * @Description  分析结果输出模式
  * @Date 14:15 2023/2/8
  **/
+@Setter
+@Getter
 public enum OutModelEnum {
     LOG("LOG", "日志方式输出"),
     MQ("MQ", "发送mq"),
@@ -27,19 +32,4 @@ public enum OutModelEnum {
      */
     private String modelDesc;
 
-    public String getModelType() {
-        return modelType;
-    }
-
-    public void setModelType(String modelType) {
-        this.modelType = modelType;
-    }
-
-    public String getModelDesc() {
-        return modelDesc;
-    }
-
-    public void setModelDesc(String modelDesc) {
-        this.modelDesc = modelDesc;
-    }
 }

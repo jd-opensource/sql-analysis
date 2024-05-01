@@ -1,10 +1,15 @@
 package com.jd.sql.analysis.analysis;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @Author huhaitao21
  * @Description sql 分析结果dto
  * @Date 20:41 2022/11/1
  **/
+@Setter
+@Getter
 public class SqlAnalysisResult {
 
     /**
@@ -71,99 +76,4 @@ public class SqlAnalysisResult {
      */
     private String extra;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getSelectType() {
-        return selectType;
-    }
-
-    public void setSelectType(String selectType) {
-        this.selectType = selectType;
-    }
-
-    public String getTable() {
-        return table;
-    }
-
-    public void setTable(String table) {
-        this.table = table;
-    }
-
-    public String getPartitions() {
-        return partitions;
-    }
-
-    public void setPartitions(String partitions) {
-        this.partitions = partitions;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getPossibleKeys() {
-        return possibleKeys;
-    }
-
-    public void setPossibleKeys(String possibleKeys) {
-        this.possibleKeys = possibleKeys;
-    }
-
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public String getKeyLen() {
-        return keyLen;
-    }
-
-    public void setKeyLen(String keyLen) {
-        this.keyLen = keyLen;
-    }
-
-    public String getRef() {
-        return ref;
-    }
-
-    public void setRef(String ref) {
-        this.ref = ref;
-    }
-
-    public String getRows() {
-        return rows;
-    }
-
-    public void setRows(String rows) {
-        this.rows = rows;
-    }
-
-    public Double getFiltered() {
-        return filtered;
-    }
-
-    public void setFiltered(Double filtered) {
-        this.filtered = filtered;
-    }
-
-    public String getExtra() {
-        return extra;
-    }
-
-    public void setExtra(String extra) {
-        this.extra = extra;
-    }
 }

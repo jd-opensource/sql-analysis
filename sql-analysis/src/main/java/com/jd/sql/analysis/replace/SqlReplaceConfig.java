@@ -2,6 +2,7 @@ package com.jd.sql.analysis.replace;
 
 import com.jd.sql.analysis.util.DuccMonitorUtil;
 import com.jd.sql.analysis.util.GsonUtil;
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,13 @@ public class SqlReplaceConfig {
 
     /**
      * 配置明细
+     * -- GETTER --
+     *  获取sql替换映射对象
+     *
+     * @return
+
      */
+    @Getter
     private static HashMap<String,String> sqlReplaceMap = new HashMap<>();
 
     /**
@@ -49,11 +56,4 @@ public class SqlReplaceConfig {
         return null;
     }
 
-    /**
-     * 获取sql替换映射对象
-     * @return
-     */
-    public static HashMap<String, String> getSqlReplaceMap() {
-        return sqlReplaceMap;
-    }
 }

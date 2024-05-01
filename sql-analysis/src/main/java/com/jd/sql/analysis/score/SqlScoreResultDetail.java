@@ -1,10 +1,15 @@
 package com.jd.sql.analysis.score;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * @Author huhaitao21
  * @Description sql 评分结果
  * @Date 18:33 2022/11/2
  **/
+@Setter
+@Getter
 public class SqlScoreResultDetail {
 
     /**
@@ -29,35 +34,4 @@ public class SqlScoreResultDetail {
     private Boolean strict ;
 
 
-    public Integer getScoreDeduction() {
-        return scoreDeduction;
-    }
-
-    public void setScoreDeduction(Integer scoreDeduction) {
-        this.scoreDeduction = scoreDeduction;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
-    }
-
-    public String getSuggestion() {
-        return suggestion;
-    }
-
-    public void setSuggestion(String suggestion) {
-        this.suggestion = suggestion;
-    }
-
-    public Boolean getStrict() {
-        return strict;
-    }
-
-    public void setStrict(Boolean strict) {
-        this.strict = strict;
-    }
 }

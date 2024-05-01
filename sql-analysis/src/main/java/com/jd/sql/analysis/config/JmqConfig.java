@@ -1,5 +1,6 @@
 package com.jd.sql.analysis.config;
 
+import lombok.Getter;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,26 +17,31 @@ public class JmqConfig {
     /**
      * 应用
      */
+    @Getter
     private static String app;
 
     /**
      * 用户
      */
+    @Getter
     private static String user;
 
     /**
      * 密码
      */
+    @Getter
     private static String password;
 
     /**
      * mq地址
      */
+    @Getter
     private static String address;
 
     /**
      * 发送topic
      */
+    @Getter
     private static String topic;
 
     /**
@@ -106,43 +112,23 @@ public class JmqConfig {
         }
     }
 
-    public static String getApp() {
-        return app;
-    }
-
-    public static void setApp(String app) {
+		public static void setApp(String app) {
         JmqConfig.app = app;
     }
 
-    public static String getUser() {
-        return user;
-    }
-
-    public static void setUser(String user) {
+		public static void setUser(String user) {
         JmqConfig.user = user;
     }
 
-    public static String getPassword() {
-        return password;
-    }
-
-    public static void setPassword(String password) {
+		public static void setPassword(String password) {
         JmqConfig.password = password;
     }
 
-    public static String getAddress() {
-        return address;
-    }
-
-    public static void setAddress(String address) {
+		public static void setAddress(String address) {
         JmqConfig.address = address;
     }
 
-    public static String getTopic() {
-        return topic;
-    }
-
-    public static void setTopic(String topic) {
+		public static void setTopic(String topic) {
         JmqConfig.topic = topic;
     }
 }
