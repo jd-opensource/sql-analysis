@@ -115,8 +115,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
             String methodName = "get" + columnName.substring(0, 1).toUpperCase() + columnName.substring(1);
             Class sqlAnalysisResultClass = SqlAnalysisResult.class;
             Method getMethod = sqlAnalysisResultClass.getDeclaredMethod(methodName);
-            Object value = getMethod.invoke(result);
-            return value;
+            return getMethod.invoke(result);
         } catch (Exception e) {
             logger.error("sql analysis get value error :", e);
         }

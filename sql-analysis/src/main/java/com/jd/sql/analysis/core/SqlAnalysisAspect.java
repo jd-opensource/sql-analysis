@@ -139,8 +139,7 @@ public class SqlAnalysisAspect implements Interceptor {
             try {
                 boolean result = JmqConfig.initMqProducer();
                 if(result){
-                    SqlScoreResultOutService outServiceClass = new SqlScoreResultOutMq();
-                    sqlScoreResultOut = outServiceClass;
+		                sqlScoreResultOut = new SqlScoreResultOutMq();
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -150,8 +149,7 @@ public class SqlAnalysisAspect implements Interceptor {
         //自定义方式输出
         if(StringUtils.isNotBlank(SqlAnalysisConfig.getOutputClass())){
             try {
-                SqlScoreResultOutService outServiceClass = (SqlScoreResultOutService)Class.forName(SqlAnalysisConfig.getOutputClass()).newInstance();
-                sqlScoreResultOut = outServiceClass;
+		            sqlScoreResultOut = (SqlScoreResultOutService)Class.forName(SqlAnalysisConfig.getOutputClass()).newInstance();
             } catch (Exception e) {
                 e.printStackTrace();
                 logger.error("sql analysis init out mode error",e);

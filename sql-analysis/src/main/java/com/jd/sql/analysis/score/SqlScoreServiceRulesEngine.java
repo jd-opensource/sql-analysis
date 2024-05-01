@@ -59,7 +59,6 @@ public class SqlScoreServiceRulesEngine implements SqlScoreService {
     }
 
     private List<SqlScoreResultDetail> matchRuleEngine(SqlAnalysisResult result) {
-        List<SqlScoreResultDetail> ret = RulesEngineExecutor.executeEngine(result);
-        return ret;
+		    return RulesEngineExecutor.executeEngine(result);
     }
 }
