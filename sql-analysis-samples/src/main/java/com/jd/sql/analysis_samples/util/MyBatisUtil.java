@@ -63,7 +63,7 @@ public class MyBatisUtil {
         System.out.println(sqlSession);
         TaskMapper mapper = sqlSession.getMapper(TaskMapper.class);
 
-        Long id = 21l;
+        Long id = 21L;
         Task task = mapper.selectByPrimaryKey(id);
         System.out.println(GsonUtil.bean2Json(task));
     }
