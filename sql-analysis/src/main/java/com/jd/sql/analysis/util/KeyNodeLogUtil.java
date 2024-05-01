@@ -36,20 +36,10 @@ public class KeyNodeLogUtil {
         int batchLogSize = 10;
 
         // 生产者的线程工厂
-        ThreadFactory threadFactory = new ThreadFactory(){
-            @Override
-            public Thread newThread(Runnable r) {
-                return new Thread(r, "logDisruptorThread");
-            }
-        };
+        ThreadFactory threadFactory = r -> new Thread(r, "logDisruptorThread");
 
         // RingBuffer生产工厂,初始化RingBuffer的时候使用
-        EventFactory<KeyNodeLogModel> factory = new EventFactory<KeyNodeLogModel>() {
-            @Override
-            public KeyNodeLogModel newInstance() {
-                return new KeyNodeLogModel();
-            }
-        };
+        EventFactory<KeyNodeLogModel> factory = () -> new KeyNodeLogModel();
 
         // 阻塞策略
         BlockingWaitStrategy strategy = new BlockingWaitStrategy();
@@ -59,14 +49,11 @@ public class KeyNodeLogUtil {
         ringBuffer = disruptor.getRingBuffer();
 
         // 处理Event的handler
-        EventHandler<KeyNodeLogModel> handler = new EventHandler<KeyNodeLogModel>(){
-            @Override
-            public void onEvent(KeyNodeLogModel element, long sequence, boolean endOfBatch) throws InterruptedException {
-                if(Objects.isNull(element)){
-                    return;
-                }
-                sendSingleLog(element);
+        EventHandler<KeyNodeLogModel> handler = (element, sequence, endOfBatch) -> {
+            if(Objects.isNull(element)){
+                return;
             }
+            sendSingleLog(element);
         };
         // 设置EventHandler
         disruptor.handleEventsWith(handler);
