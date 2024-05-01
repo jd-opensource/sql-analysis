@@ -26,12 +26,12 @@ public enum SqlAnalysisSqlTypeEnum {
     /**
      * sql类型
      */
-    private String type;
+    private final String type;
 
     /**
      * 描述
      */
-    private String description;
+    private final String description;
 
 
 }

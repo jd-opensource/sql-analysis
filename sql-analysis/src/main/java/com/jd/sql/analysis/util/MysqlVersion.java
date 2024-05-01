@@ -20,6 +20,6 @@ public enum MysqlVersion {
         this.version = version;
     }
 
-    private String version;
+    private final String version;
 
 }

@@ -19,7 +19,7 @@ public enum MatchType {
     /**
      * 匹配类型
      */
-    private String type;
+    private final String type;
 
     MatchType(String type){
         this.type = type;

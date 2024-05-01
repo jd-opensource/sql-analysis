@@ -26,7 +26,7 @@ public enum MatchColumn {
     /**
      * 匹配字段
      */
-    private String column;
+    private final String column;
 
     MatchColumn(String column){
         this.column = column;

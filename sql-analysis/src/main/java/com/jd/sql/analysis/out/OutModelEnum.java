@@ -25,11 +25,11 @@ public enum OutModelEnum {
     /**
      * 模式类型
      */
-    private String modelType;
+    private final String modelType;
 
     /**
      * 模式描述
      */
-    private String modelDesc;
+    private final String modelDesc;
 
 }
