@@ -39,7 +39,7 @@ public class SqlExtract {
     /**
      * 记录sqlId-check time
      */
-    private static final ConcurrentHashMap<String,Long> checkedIdMap = new ConcurrentHashMap();
+    private static final ConcurrentHashMap<String,Long> checkedIdMap = new ConcurrentHashMap<>();
 
     /**
      * 提取完整sql
