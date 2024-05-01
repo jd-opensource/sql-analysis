@@ -53,7 +53,7 @@ import java.util.Properties;
 )})
 public class SqlAnalysisAspect implements Interceptor {
 
-    Logger logger = LoggerFactory.getLogger(SqlAnalysisAspect.class);
+    final Logger logger = LoggerFactory.getLogger(SqlAnalysisAspect.class);
 
     /**
      * 评分规则服务

@@ -16,7 +16,7 @@ import java.util.Objects;
  **/
 public class SqlReplaceConfig {
 
-    static Logger log  = LoggerFactory.getLogger(SqlReplaceConfig.class);
+    static final Logger log  = LoggerFactory.getLogger(SqlReplaceConfig.class);
 
     /**
      * 配置明细
