@@ -8,7 +8,6 @@ import lombok.Setter;
  * @Description sql 分析组件支持分析的sql类型
  * @Date 19:36 2022/11/3
  **/
-@Setter
 @Getter
 public enum SqlAnalysisSqlTypeEnum {
 

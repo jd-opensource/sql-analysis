@@ -34,7 +34,7 @@ public class SqlAnalysis {
 		 * @return
 		 */
 		public static SqlAnalysisResultList analysis(SqlExtractResult sqlExtractResult, Connection connection) {
-				if (sqlExtractResult == null) {
+				if (sqlExtractResult == null || connection == null) {
 						return null;
 				}
 				String sourceSql = sqlExtractResult.getSourceSql();
