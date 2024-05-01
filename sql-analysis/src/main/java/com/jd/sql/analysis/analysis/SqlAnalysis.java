@@ -43,8 +43,8 @@ public class SqlAnalysis {
         SqlAnalysisResult sqlAnalysisResutlDto = null;
 
         //包装分析语句
-        String analysisSql = getAnalysisSql(sourceSql);;
-        PreparedStatement pstmt = null;
+        String analysisSql = getAnalysisSql(sourceSql);
+		    PreparedStatement pstmt = null;
         ResultSet rs = null;
         try {
             pstmt = connection.prepareStatement(analysisSql);
