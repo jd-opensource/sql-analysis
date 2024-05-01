@@ -45,8 +45,8 @@ public class RulesEngineExecutor {
         } catch (IOException e) {
             logger.error("规则引擎配置文件加载失败",e);
         }
-        Map<String,MVELRule> ruleMap = new HashMap<String,MVELRule>();
-        ConcurrentHashMap<String,SqlScoreResultDetail> innerScoreMap = new ConcurrentHashMap<String,SqlScoreResultDetail>();
+        Map<String,MVELRule> ruleMap = new HashMap<>();
+        ConcurrentHashMap<String,SqlScoreResultDetail> innerScoreMap = new ConcurrentHashMap<>();
         properties.forEach((key, value) -> {
             String[] keyArr = StringUtils.split(key.toString(),'.');
             if(keyArr.length >= 2){
@@ -78,8 +78,8 @@ public class RulesEngineExecutor {
     }
 
     public static List<SqlScoreResultDetail> executeEngine(SqlAnalysisResult sqlAnalysisResult) {
-        ArrayList<SqlScoreResultDetail> retList = new ArrayList<SqlScoreResultDetail>();
-        ArrayList<String> ret = new ArrayList<String>();
+        ArrayList<SqlScoreResultDetail> retList = new ArrayList<>();
+        ArrayList<String> ret = new ArrayList<>();
         // 创建事实
         Facts facts = new Facts();
         facts.put("param", sqlAnalysisResult);
