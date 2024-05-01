@@ -17,6 +17,7 @@ import java.util.List;
  * @Author huhaitao21
  * @Description 评分服务默认实现
  * @Date 20:43 2022/11/1
+ * @deprecated
  **/
 @Deprecated
 public class SqlScoreServiceDefault implements SqlScoreService {
@@ -45,10 +46,10 @@ public class SqlScoreServiceDefault implements SqlScoreService {
         }
 
         //综合评分计算
-        return getSqlScoreResult(score, scoreResult, analysisResults, WARN_SCORE, logger);
+        return getSqlScoreResult(score, scoreResult, analysisResults);
     }
 
-    static SqlScoreResult getSqlScoreResult(int score, SqlScoreResult scoreResult, List<SqlScoreResultDetail> analysisResults, Integer warnScore, Logger logger) {
+    static SqlScoreResult getSqlScoreResult(int score, SqlScoreResult scoreResult, List<SqlScoreResultDetail> analysisResults) {
         for (SqlScoreResultDetail detail : analysisResults) {
             score = score - detail.getScoreDeduction();
             if (score < 0) {
@@ -56,7 +57,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
                 score = 0;
             }
 
-		        scoreResult.setNeedWarn(score < warnScore);
+		        scoreResult.setNeedWarn(score < SqlScoreServiceDefault.WARN_SCORE);
         }
         scoreResult.setScore(score);
         scoreResult.setAnalysisResults(analysisResults);
