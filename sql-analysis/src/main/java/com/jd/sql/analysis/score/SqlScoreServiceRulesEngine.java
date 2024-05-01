@@ -3,13 +3,14 @@ package com.jd.sql.analysis.score;
 import com.jd.sql.analysis.analysis.SqlAnalysisResult;
 import com.jd.sql.analysis.analysis.SqlAnalysisResultList;
 import com.jd.sql.analysis.rule.RulesEngineExecutor;
-import com.jd.sql.analysis.util.GsonUtil;
 import org.apache.commons.collections4.CollectionUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.jd.sql.analysis.score.SqlScoreServiceDefault.getSqlScoreResult;
 
 /**
  * @Author huhaitao21
@@ -42,7 +43,7 @@ public class SqlScoreServiceRulesEngine implements SqlScoreService {
         }
 
         //综合评分计算
-        return getSqlScoreResult(score, scoreResult, analysisResults, WARN_SCORE, logger);
+        return getSqlScoreResult(score, scoreResult, analysisResults, WARN_SCORE);
     }
 
     private List<SqlScoreResultDetail> matchRuleEngine(SqlAnalysisResult result) {
