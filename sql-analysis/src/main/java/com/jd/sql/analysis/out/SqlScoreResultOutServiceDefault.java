@@ -21,9 +21,7 @@ public class SqlScoreResultOutServiceDefault implements SqlScoreResultOutService
         if(sqlScoreResult.getNeedWarn()!=null && sqlScoreResult.getNeedWarn()){
             logger.error("sql analysis result score:{}",sqlScoreResult.getScore());
             if(sqlScoreResult.getAnalysisResults()!=null){
-                sqlScoreResult.getAnalysisResults().forEach(result->{
-                    logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion());
-                });
+                sqlScoreResult.getAnalysisResults().forEach(result-> logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion()));
             }
         }
     }

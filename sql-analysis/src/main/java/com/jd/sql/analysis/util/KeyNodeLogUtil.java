@@ -39,7 +39,7 @@ public class KeyNodeLogUtil {
         ThreadFactory threadFactory = r -> new Thread(r, "logDisruptorThread");
 
         // RingBuffer生产工厂,初始化RingBuffer的时候使用
-        EventFactory<KeyNodeLogModel> factory = () -> new KeyNodeLogModel();
+        EventFactory<KeyNodeLogModel> factory = KeyNodeLogModel::new;
 
         // 阻塞策略
         BlockingWaitStrategy strategy = new BlockingWaitStrategy();

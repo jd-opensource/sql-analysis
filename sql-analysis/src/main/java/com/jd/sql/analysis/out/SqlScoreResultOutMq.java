@@ -23,9 +23,7 @@ public class SqlScoreResultOutMq implements SqlScoreResultOutService {
             //todo 待替换为开源组件
             logger.error("sql analysis result sqlId:{}, score:{}",sqlScoreResult.getSqlId(),sqlScoreResult.getScore());
             if(sqlScoreResult.getAnalysisResults()!=null){
-                sqlScoreResult.getAnalysisResults().forEach(result->{
-                    logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion());
-                });
+                sqlScoreResult.getAnalysisResults().forEach(result-> logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion()));
             }
         }
     }
