@@ -39,6 +39,10 @@ public class RulesEngineExecutor {
         InputStream inputStream;
         Properties properties = new Properties();
         inputStream = RulesEngineExecutor.class.getClassLoader().getResourceAsStream("sql-analysis-rule-config.properties");
+        if(inputStream == null){
+            logger.error("规则引擎配置文件加载失败");
+            return false;
+        }
         try {
             properties.load(new InputStreamReader(inputStream));
             inputStream.close();
