@@ -58,7 +58,7 @@ public class SqlAnalysisAspect implements Interceptor {
     /**
      * 评分规则服务
      */
-    private static SqlScoreService sqlScoreService = new SqlScoreServiceRulesEngine();
+    private static final SqlScoreService sqlScoreService = new SqlScoreServiceRulesEngine();
 
     /**
      * 评分结果输出服务

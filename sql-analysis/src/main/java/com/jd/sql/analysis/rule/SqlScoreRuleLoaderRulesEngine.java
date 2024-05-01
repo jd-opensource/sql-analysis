@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
  **/
 public class SqlScoreRuleLoaderRulesEngine implements SqlScoreRuleLoader {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreRuleLoaderRulesEngine.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlScoreRuleLoaderRulesEngine.class);
 
 
     @Override

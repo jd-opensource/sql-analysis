@@ -21,7 +21,7 @@ import java.util.List;
 @Deprecated
 public class SqlScoreServiceDefault implements SqlScoreService {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreServiceDefault.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlScoreServiceDefault.class);
 
     private static final Integer WARN_SCORE = 80;
 

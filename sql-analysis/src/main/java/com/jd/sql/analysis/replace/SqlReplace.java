@@ -16,7 +16,7 @@ import java.util.Arrays;
  **/
 public class SqlReplace {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlReplace.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlReplace.class);
 
     public static void replace(Invocation invocation,String newSql){
         // 获取当前执行的SQL语句
@@ -76,7 +76,7 @@ public class SqlReplace {
 
 
     private static class BoundSqlSqlSource implements SqlSource {
-        private BoundSql boundSql;
+        private final BoundSql boundSql;
 
         public BoundSqlSqlSource(BoundSql boundSql) {
             this.boundSql = boundSql;

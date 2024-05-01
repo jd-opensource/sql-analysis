@@ -24,7 +24,7 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class RulesEngineExecutor {
 
-    private static Logger logger = LoggerFactory.getLogger(RulesEngineExecutor.class);
+    private static final Logger logger = LoggerFactory.getLogger(RulesEngineExecutor.class);
 
     public final static RulesEngine rulesEngine = new DefaultRulesEngine();
     private static Rules rules;

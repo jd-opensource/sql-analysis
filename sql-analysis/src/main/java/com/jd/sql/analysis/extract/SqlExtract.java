@@ -34,12 +34,12 @@ import java.util.regex.Matcher;
  **/
 public class SqlExtract {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlExtract.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlExtract.class);
 
     /**
      * 记录sqlId-check time
      */
-    private static ConcurrentHashMap<String,Long> checkedIdMap = new ConcurrentHashMap();
+    private static final ConcurrentHashMap<String,Long> checkedIdMap = new ConcurrentHashMap();
 
     /**
      * 提取完整sql

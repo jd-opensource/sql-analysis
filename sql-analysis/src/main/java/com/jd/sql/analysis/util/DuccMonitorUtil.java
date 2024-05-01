@@ -11,8 +11,8 @@ import org.slf4j.LoggerFactory;
  **/
 public class DuccMonitorUtil {
 
-    private static Logger log = LoggerFactory.getLogger(DuccMonitorUtil.class);
-    private static String duccConfig = "";
+    private static final Logger log = LoggerFactory.getLogger(DuccMonitorUtil.class);
+    private static final String duccConfig = "";
 
     /**
      * 启动监控

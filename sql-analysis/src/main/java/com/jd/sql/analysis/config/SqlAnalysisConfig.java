@@ -20,7 +20,7 @@ import java.util.Properties;
 public class SqlAnalysisConfig {
 
 
-    private static Logger logger = LoggerFactory.getLogger(SqlAnalysisConfig.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlAnalysisConfig.class);
 
     /**
      * 分析开关，默认关闭

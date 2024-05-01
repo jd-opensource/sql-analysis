@@ -12,7 +12,7 @@ import java.util.Properties;
  * @Date 18:20 2023/2/9
  **/
 public class JmqConfig {
-    private static Logger  logger = LoggerFactory.getLogger(JmqConfig.class);
+    private static final Logger  logger = LoggerFactory.getLogger(JmqConfig.class);
     /**
      * 应用
      */
@@ -41,27 +41,27 @@ public class JmqConfig {
     /**
      * 应用名称配置key
      */
-    private static String MQ_APP = "mqApp";
+    private static final String MQ_APP = "mqApp";
 
     /**
      * 用户配置key
      */
-    private static String MQ_USER = "mqUser";
+    private static final String MQ_USER = "mqUser";
 
     /**
      * 密码配置key
      */
-    private static String MQ_PASSWORD = "mqPassword";
+    private static final String MQ_PASSWORD = "mqPassword";
 
     /**
      * mq地址配置key
      */
-    private static String MQ_ADDRESS = "mqAddress";
+    private static final String MQ_ADDRESS = "mqAddress";
 
     /**
      * topic
      */
-    private static String MQ_TOPIC = "mqTopic";
+    private static final String MQ_TOPIC = "mqTopic";
 
 
     /**

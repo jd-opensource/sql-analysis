@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
  **/
 public class SqlScoreResultOutMq implements SqlScoreResultOutService {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreResultOutMq.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutMq.class);
 
     @Override
     public void outResult(SqlScoreResult sqlScoreResult) {

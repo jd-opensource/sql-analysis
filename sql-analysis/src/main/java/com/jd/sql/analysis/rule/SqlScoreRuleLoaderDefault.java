@@ -14,7 +14,7 @@ import java.util.List;
 @Deprecated
 public class SqlScoreRuleLoaderDefault implements SqlScoreRuleLoader {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreRuleLoaderDefault.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlScoreRuleLoaderDefault.class);
 
 
     @Override

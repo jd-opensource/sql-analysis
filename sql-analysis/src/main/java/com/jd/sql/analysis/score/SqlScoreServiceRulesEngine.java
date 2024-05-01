@@ -18,7 +18,7 @@ import java.util.List;
  **/
 public class SqlScoreServiceRulesEngine implements SqlScoreService {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlScoreServiceRulesEngine.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlScoreServiceRulesEngine.class);
 
     private static final Integer WARN_SCORE = 80;
 

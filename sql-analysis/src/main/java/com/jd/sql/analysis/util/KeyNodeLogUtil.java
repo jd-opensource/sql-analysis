@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadFactory;
  **/
 public class KeyNodeLogUtil {
 
-    private static Logger log = LoggerFactory.getLogger(KeyNodeLogUtil.class);
+    private static final Logger log = LoggerFactory.getLogger(KeyNodeLogUtil.class);
 
 
     private static RingBuffer<KeyNodeLogModel> ringBuffer = null;

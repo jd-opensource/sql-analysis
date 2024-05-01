@@ -21,7 +21,7 @@ import java.util.List;
  **/
 public class SqlAnalysis {
 
-    private static Logger logger = LoggerFactory.getLogger(SqlAnalysis.class);
+    private static final Logger logger = LoggerFactory.getLogger(SqlAnalysis.class);
 
     /**
      * mysql 版本标识
