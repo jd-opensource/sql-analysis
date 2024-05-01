@@ -55,7 +55,7 @@ public class KeyNodeLogUtil {
         BlockingWaitStrategy strategy = new BlockingWaitStrategy();
 
         // 创建disruptor，采用单生产者模式
-        Disruptor<KeyNodeLogModel> disruptor = new Disruptor(factory, bufferSize, threadFactory, ProducerType.SINGLE, strategy);
+        Disruptor<KeyNodeLogModel> disruptor = new Disruptor<>(factory, bufferSize, threadFactory, ProducerType.SINGLE, strategy);
         ringBuffer = disruptor.getRingBuffer();
 
         // 处理Event的handler
