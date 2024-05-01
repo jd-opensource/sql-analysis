@@ -8,7 +8,6 @@ import lombok.Setter;
  * @Description //TODO
  * @Date 20:06 2023/3/16
  **/
-@Setter
 @Getter
 public enum MysqlVersion {
 

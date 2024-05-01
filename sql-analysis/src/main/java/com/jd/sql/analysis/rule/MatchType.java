@@ -8,7 +8,6 @@ import lombok.Setter;
  * @Description 匹配类型
  * @Date 15:50 2022/11/9
  **/
-@Setter
 @Getter
 public enum MatchType {
     EQUAL("等于"),

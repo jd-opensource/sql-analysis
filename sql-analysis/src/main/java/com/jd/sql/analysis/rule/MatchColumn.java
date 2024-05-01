@@ -8,7 +8,6 @@ import lombok.Setter;
  * @Description 匹配列
  * @Date 15:50 2022/11/9
  **/
-@Setter
 @Getter
 public enum MatchColumn {
     SELECT_TYPE("selectType"),

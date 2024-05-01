@@ -8,7 +8,6 @@ import lombok.Setter;
  * @Description  分析结果输出模式
  * @Date 14:15 2023/2/8
  **/
-@Setter
 @Getter
 public enum OutModelEnum {
     LOG("LOG", "日志方式输出"),
