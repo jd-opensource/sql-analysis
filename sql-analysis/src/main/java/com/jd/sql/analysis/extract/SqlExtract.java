@@ -112,11 +112,7 @@ public class SqlExtract {
         }
 
         //检查间隔判断
-        if(checkedIdMap.get(sqlId)!=null && (System.currentTimeMillis()-checkedIdMap.get(sqlId))<SqlAnalysisConfig.getCheckInterval()){
-            return false;
-        }
-
-        return true;
+		    return checkedIdMap.get(sqlId) == null || (System.currentTimeMillis() - checkedIdMap.get(sqlId)) >= SqlAnalysisConfig.getCheckInterval();
     }
 
 

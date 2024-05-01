@@ -52,11 +52,7 @@ public class SqlScoreServiceDefault implements SqlScoreService {
                 score = 0;
             }
 
-            if (score < WARN_SCORE) {
-                scoreResult.setNeedWarn(true);
-            } else {
-                scoreResult.setNeedWarn(false);
-            }
+		        scoreResult.setNeedWarn(score < WARN_SCORE);
         }
         scoreResult.setScore(score);
         scoreResult.setAnalysisResults(analysisResults);

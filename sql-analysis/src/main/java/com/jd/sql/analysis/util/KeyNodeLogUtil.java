@@ -150,10 +150,7 @@ public class KeyNodeLogUtil {
      * @return
      */
     public static boolean checkModel(KeyNodeLogModel model){
-        if(StringUtils.isBlank(model.getBusinessId()) || StringUtils.isBlank(model.getModuleName()) || StringUtils.isBlank(model.getNodeName())){
-            return false;
-        }
-        return true;
+		    return !StringUtils.isBlank(model.getBusinessId()) && !StringUtils.isBlank(model.getModuleName()) && !StringUtils.isBlank(model.getNodeName());
     }
 
     public static void sendMessage(String topic,String businessId,String messageBody) {
