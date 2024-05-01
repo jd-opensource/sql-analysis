@@ -16,45 +16,41 @@ import java.util.Date;
 @Builder
 public class KeyNodeLogModel {
 
-    public KeyNodeLogModel(){
+		/**
+		 * 业务id
+		 */
+		private String businessId;
+		/**
+		 * 业务模块名称
+		 */
+		private String moduleName;
+		/**
+		 * 节点名称
+		 */
+		private String nodeName;
+		/**
+		 * 业务时间
+		 */
+		private Date businessTime;
+		/**
+		 * 日志时间
+		 */
+		private Date logTime;
+		/**
+		 * 描述
+		 */
+		private String describe;
 
-    }
-    /**
-     * 业务id
-     */
-    private String businessId;
+		public KeyNodeLogModel() {
 
-    /**
-     * 业务模块名称
-     */
-    private String moduleName;
-
-    /**
-     * 节点名称
-     */
-    private String nodeName;
-
-    /**
-     * 业务时间
-     */
-    private Date businessTime;
-
-    /**
-     * 日志时间
-     */
-    private Date logTime;
-
-    /**
-     * 描述
-     */
-    private String describe;
+		}
 
 		public KeyNodeLogModel(String businessId, String moduleName, String nodeName, Date businessTime, Date logTime, String describe) {
-        this.businessId = businessId;
-        this.moduleName = moduleName;
-        this.nodeName = nodeName;
-        this.businessTime = businessTime;
-        this.logTime = logTime;
-        this.describe = describe;
-    }
+				this.businessId = businessId;
+				this.moduleName = moduleName;
+				this.nodeName = nodeName;
+				this.businessTime = businessTime;
+				this.logTime = logTime;
+				this.describe = describe;
+		}
 }

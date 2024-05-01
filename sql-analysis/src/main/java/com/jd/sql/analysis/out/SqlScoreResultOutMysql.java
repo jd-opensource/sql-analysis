@@ -10,11 +10,8 @@ import org.slf4j.LoggerFactory;
  * @Date 17:24 2022/11/7
  **/
 public class SqlScoreResultOutMysql implements SqlScoreResultOutService {
-
-    private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutMysql.class);
-
-    @Override
-    public void outResult(SqlScoreResult sqlScoreResult) {
-        //todo 待实现
-    }
+		@Override
+		public void outResult(SqlScoreResult sqlScoreResult) {
+				//todo 待实现
+		}
 }

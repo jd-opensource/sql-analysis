@@ -11,21 +11,21 @@ import org.slf4j.LoggerFactory;
  **/
 public class SqlScoreResultOutMq implements SqlScoreResultOutService {
 
-    private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutMq.class);
+		private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutMq.class);
 
-    @Override
-    public void outResult(SqlScoreResult sqlScoreResult) {
-        if(sqlScoreResult==null){
-            return;
-        }
-        if(sqlScoreResult.getNeedWarn()!=null && sqlScoreResult.getNeedWarn()){
-            //发送mq
-            //todo 待替换为开源组件
-            logger.error("sql analysis result sqlId:{}, score:{}",sqlScoreResult.getSqlId(),sqlScoreResult.getScore());
-            if(sqlScoreResult.getAnalysisResults()!=null){
-                sqlScoreResult.getAnalysisResults().forEach(result-> logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion()));
-            }
-        }
-    }
+		@Override
+		public void outResult(SqlScoreResult sqlScoreResult) {
+				if (sqlScoreResult == null) {
+						return;
+				}
+				if (sqlScoreResult.getNeedWarn() != null && sqlScoreResult.getNeedWarn()) {
+						//发送mq
+						//todo 待替换为开源组件
+						logger.error("sql analysis result sqlId:{}, score:{}", sqlScoreResult.getSqlId(), sqlScoreResult.getScore());
+						if (sqlScoreResult.getAnalysisResults() != null) {
+								sqlScoreResult.getAnalysisResults().forEach(result -> logger.error("sql analysis result detail-reason:{},suggestion:{}", result.getReason(), result.getSuggestion()));
+						}
+				}
+		}
 
 }

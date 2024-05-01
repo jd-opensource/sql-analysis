@@ -9,11 +9,12 @@ import com.jd.sql.analysis.analysis.SqlAnalysisResultList;
  **/
 public interface SqlScoreService {
 
-    /**
-     * 计算sql评分
-     * @param sqlAnalysisResutlDto
-     * @return
-     */
-    SqlScoreResult score(SqlAnalysisResultList sqlAnalysisResutlDto);
+		/**
+		 * 计算sql评分
+		 *
+		 * @param sqlAnalysisResutlDto
+		 * @return
+		 */
+		SqlScoreResult score(SqlAnalysisResultList sqlAnalysisResutlDto);
 
 }

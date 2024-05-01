@@ -14,29 +14,25 @@ import java.util.List;
 @Getter
 public class SqlScoreResult {
 
-    /**
-     * sql id
-     */
-    private String sqlId;
-
-    /**
-     * 执行的原始sql
-     */
-    private String sourceSql;
-
-    /**
-     * 是否需要警告
-     */
-    private Boolean needWarn;
-
-    /**
-     * 综合评分
-     */
-    private Integer score;
-
-    /**
-     * 分析结果明细
-     */
-    List<SqlScoreResultDetail> analysisResults;
+		/**
+		 * 分析结果明细
+		 */
+		List<SqlScoreResultDetail> analysisResults;
+		/**
+		 * sql id
+		 */
+		private String sqlId;
+		/**
+		 * 执行的原始sql
+		 */
+		private String sourceSql;
+		/**
+		 * 是否需要警告
+		 */
+		private Boolean needWarn;
+		/**
+		 * 综合评分
+		 */
+		private Integer score;
 
 }

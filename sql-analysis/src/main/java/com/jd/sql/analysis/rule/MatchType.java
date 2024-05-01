@@ -1,7 +1,6 @@
 package com.jd.sql.analysis.rule;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @Author huhaitao21
@@ -10,18 +9,18 @@ import lombok.Setter;
  **/
 @Getter
 public enum MatchType {
-    EQUAL("等于"),
-    GREATER("大于"),
-    LESS("小于"),
-    CONTAIN("包含");
+		EQUAL("等于"),
+		GREATER("大于"),
+		LESS("小于"),
+		CONTAIN("包含");
 
-    /**
-     * 匹配类型
-     */
-    private final String type;
+		/**
+		 * 匹配类型
+		 */
+		private final String type;
 
-    MatchType(String type){
-        this.type = type;
-    }
+		MatchType(String type) {
+				this.type = type;
+		}
 
 }

@@ -1,7 +1,6 @@
 package com.jd.sql.analysis.util;
 
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @Author huhaitao21
@@ -11,14 +10,14 @@ import lombok.Setter;
 @Getter
 public enum MysqlVersion {
 
-    MYSQL_5_6("MYSQL_5.6"),
-    MYSQL_5_7( "MYSQL_5.7");
+		MYSQL_5_6("MYSQL_5.6"),
+		MYSQL_5_7("MYSQL_5.7");
 
 
-    MysqlVersion(String version) {
-        this.version = version;
-    }
+		private final String version;
 
-    private final String version;
+		MysqlVersion(String version) {
+				this.version = version;
+		}
 
 }

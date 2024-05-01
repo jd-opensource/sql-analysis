@@ -11,18 +11,18 @@ import org.slf4j.LoggerFactory;
  **/
 public class SqlScoreResultOutServiceDefault implements SqlScoreResultOutService {
 
-    private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutServiceDefault.class);
+		private static final Logger logger = LoggerFactory.getLogger(SqlScoreResultOutServiceDefault.class);
 
-    @Override
-    public void outResult(SqlScoreResult sqlScoreResult) {
-        if(sqlScoreResult==null){
-            return;
-        }
-        if(sqlScoreResult.getNeedWarn()!=null && sqlScoreResult.getNeedWarn()){
-            logger.error("sql analysis result score:{}",sqlScoreResult.getScore());
-            if(sqlScoreResult.getAnalysisResults()!=null){
-                sqlScoreResult.getAnalysisResults().forEach(result-> logger.error("sql analysis result detail-reason:{},suggestion:{}",result.getReason(),result.getSuggestion()));
-            }
-        }
-    }
+		@Override
+		public void outResult(SqlScoreResult sqlScoreResult) {
+				if (sqlScoreResult == null) {
+						return;
+				}
+				if (sqlScoreResult.getNeedWarn() != null && sqlScoreResult.getNeedWarn()) {
+						logger.error("sql analysis result score:{}", sqlScoreResult.getScore());
+						if (sqlScoreResult.getAnalysisResults() != null) {
+								sqlScoreResult.getAnalysisResults().forEach(result -> logger.error("sql analysis result detail-reason:{},suggestion:{}", result.getReason(), result.getSuggestion()));
+						}
+				}
+		}
 }

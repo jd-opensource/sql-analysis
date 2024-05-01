@@ -9,9 +9,10 @@ import com.jd.sql.analysis.score.SqlScoreResult;
  **/
 public interface SqlScoreResultOutService {
 
-    /**
-     * 输出分析结果
-     * @param sqlScoreResult
-     */
-    void outResult(SqlScoreResult sqlScoreResult);
+		/**
+		 * 输出分析结果
+		 *
+		 * @param sqlScoreResult
+		 */
+		void outResult(SqlScoreResult sqlScoreResult);
 }

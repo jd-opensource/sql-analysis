@@ -12,15 +12,15 @@ import lombok.Setter;
 @Getter
 public class SqlExtractResult {
 
-    /**
-     * 基于mybatis 配置的sql id
-     */
-    private String sqlId;
+		/**
+		 * 基于mybatis 配置的sql id
+		 */
+		private String sqlId;
 
-    /**
-     * 待执行，原sql
-     */
-    private String sourceSql;
+		/**
+		 * 待执行，原sql
+		 */
+		private String sourceSql;
 
 
 }

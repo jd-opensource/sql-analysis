@@ -12,26 +12,25 @@ import lombok.Setter;
 @Getter
 public enum SqlAnalysisSqlTypeEnum {
 
-    SELECT("SELECT", "查询"),
-    UPDATE("UPDATE", "更新"),
-    INSERT("INSERT", "插入"),
-    DELETE("DELETE", "删除");
+		SELECT("SELECT", "查询"),
+		UPDATE("UPDATE", "更新"),
+		INSERT("INSERT", "插入"),
+		DELETE("DELETE", "删除");
 
 
-    SqlAnalysisSqlTypeEnum(String type, String description) {
-        this.type = type;
-        this.description = description;
-    }
+		/**
+		 * sql类型
+		 */
+		private final String type;
+		/**
+		 * 描述
+		 */
+		private final String description;
 
-    /**
-     * sql类型
-     */
-    private final String type;
-
-    /**
-     * 描述
-     */
-    private final String description;
+		SqlAnalysisSqlTypeEnum(String type, String description) {
+				this.type = type;
+				this.description = description;
+		}
 
 
 }

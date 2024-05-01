@@ -7,9 +7,9 @@ package com.jd.sql.analysis.rule;
  **/
 public interface SqlScoreRuleLoader {
 
-    /**
-     * 加载评分规则
-     */
-    boolean loadScoreRule();
+		/**
+		 * 加载评分规则
+		 */
+		boolean loadScoreRule();
 
 }

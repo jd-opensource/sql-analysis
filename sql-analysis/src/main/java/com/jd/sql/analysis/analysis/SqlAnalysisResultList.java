@@ -14,9 +14,9 @@ import java.util.List;
 @Getter
 public class SqlAnalysisResultList {
 
-    /**
-     * 分析结果集合
-     */
-    private List<SqlAnalysisResult> resultList;
+		/**
+		 * 分析结果集合
+		 */
+		private List<SqlAnalysisResult> resultList;
 
 }
