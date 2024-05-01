@@ -23,9 +23,6 @@ public class SqlReplaceConfig {
      * 配置明细
      * -- GETTER --
      *  获取sql替换映射对象
-     *
-     * @return
-
      */
     @Getter
     private static HashMap<String,String> sqlReplaceMap = new HashMap<>();
@@ -37,7 +34,7 @@ public class SqlReplaceConfig {
         try{
             String configStr = DuccMonitorUtil.getDuccConfig();
             if(StringUtils.isNotBlank(configStr)){
-                sqlReplaceMap =  GsonUtil.json2Bean(configStr,HashMap.class);
+                sqlReplaceMap = GsonUtil.json2Bean(configStr,HashMap.class);
             }
         }catch (Exception e){
             log.error("sql analysis replace config init error :",e);
@@ -46,8 +43,8 @@ public class SqlReplaceConfig {
 
     /**
      * 根据sqlid 获取替换sql
-     * @param sqlId
-     * @return
+     * @param sqlId id
+     * @return 替换sql
      */
     public static String getReplaceSqlBySqlId(String sqlId){
         if(StringUtils.isNotBlank(sqlId) && Objects.nonNull(sqlReplaceMap)){

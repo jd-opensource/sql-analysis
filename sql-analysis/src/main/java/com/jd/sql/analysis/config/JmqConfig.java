@@ -90,13 +90,9 @@ public class JmqConfig {
         if(properties==null){
             return false;
         }
-        if(StringUtils.isBlank(properties.getProperty(MQ_APP)) || StringUtils.isBlank(properties.getProperty(MQ_USER)) ||
-                StringUtils.isBlank(properties.getProperty(MQ_PASSWORD)) || StringUtils.isBlank(properties.getProperty(MQ_ADDRESS))
-                || StringUtils.isBlank(properties.getProperty(MQ_TOPIC))){
-            return false;
-        }
-
-        return true;
+		    return !StringUtils.isBlank(properties.getProperty(MQ_APP)) && !StringUtils.isBlank(properties.getProperty(MQ_USER)) &&
+						    !StringUtils.isBlank(properties.getProperty(MQ_PASSWORD)) && !StringUtils.isBlank(properties.getProperty(MQ_ADDRESS))
+						    && !StringUtils.isBlank(properties.getProperty(MQ_TOPIC));
     }
 
     /**
