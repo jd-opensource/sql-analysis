@@ -29,7 +29,7 @@ public class SqlScoreServiceRulesEngine implements SqlScoreService {
             return null;
         }
         //默认100分，扣分制
-        Integer score = 100;
+        int score = 100;
         SqlScoreResult scoreResult = new SqlScoreResult();
 
         List<SqlScoreResultDetail> analysisResults = new ArrayList<>();
