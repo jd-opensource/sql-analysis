@@ -158,7 +158,6 @@ public class SqlScoreServiceDefault implements SqlScoreService {
                 }
                 break;
             default:
-                ;
         }
         return matchResult;
     }
