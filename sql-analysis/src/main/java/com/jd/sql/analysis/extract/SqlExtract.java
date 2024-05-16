@@ -156,12 +156,12 @@ public class SqlExtract {
                 MetaObject metaObject = configuration.newMetaObject(parameterObject);
                 for (ParameterMapping parameterMapping : parameterMappings) {
                     String propertyName = parameterMapping.getProperty();
-                    if (metaObject.hasGetter(propertyName)) {
-                        Object obj = metaObject.getValue(propertyName);
-                        sql = sql.replaceFirst("\\?", Matcher.quoteReplacement(getParameterValue(obj)));
-                    } else if (boundSql.hasAdditionalParameter(propertyName)) {
+                    if (boundSql.hasAdditionalParameter(propertyName)) {
                         // 该分支是动态sql
                         Object obj = boundSql.getAdditionalParameter(propertyName);
+                        sql = sql.replaceFirst("\\?", Matcher.quoteReplacement(getParameterValue(obj)));
+                    } else if (metaObject.hasGetter(propertyName)) {
+                        Object obj = metaObject.getValue(propertyName);
                         sql = sql.replaceFirst("\\?", Matcher.quoteReplacement(getParameterValue(obj)));
                     } else {
                         // 打印出缺失，提醒该参数缺失并防止错位
