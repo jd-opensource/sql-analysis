@@ -57,6 +57,21 @@
 
   </select>
 
+
+  <select id="queryLike" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from task
+    <where>
+      <if test="title != null and title != ''">
+        <bind name="title" value="'%' + title + '%'"/>
+        and title like #{title}
+      </if>
+    </where>
+
+
+  </select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from task
     where id = #{id,jdbcType=BIGINT}

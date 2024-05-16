@@ -24,4 +24,6 @@ public interface TaskMapper {
 
     List<Task> queryAllM(@Param("task") Task task, @Param("id")Long id);
 
+
+    List<Task> queryLike(Task task);
 }
