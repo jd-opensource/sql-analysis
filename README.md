@@ -80,7 +80,7 @@ Mybatis-SQL分析组件
 <dependency>
     <groupId>io.github.huht123.sql-analysis</groupId>
     <artifactId>sql-analysis</artifactId>
-    <version>1.0</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
