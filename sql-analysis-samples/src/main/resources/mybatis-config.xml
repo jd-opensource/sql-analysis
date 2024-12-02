@@ -39,13 +39,13 @@
             <!-- 开启sql替换功能最简配置 -->
             <property name="sqlReplaceModelSwitch" value="true"/>
             <property name="duccAppName" value="workbench-backend"/>
-            <property name="duccUri" value="ucc://workbench-backend:2d6991cb865f4e6bac6c3e1cf7794cdf@test.ducc.jd.local/v1/namespace/workbench_backend/config/default/profiles/test?longPolling=60000&amp;necessary=false"/>
+            <property name="duccUri" value="ucc://workbench-backend:xxx@test.ducc.jd.local/v1/namespace/workbench_backend/config/default/profiles/test?longPolling=60000&amp;necessary=false"/>
             <property name="duccMonitorKey" value="sqlReplaceConfig"/>
             <property name="outputModel" value="mq"/>
             <property name="mqApp" value="qlstation"/>
             <property name="mqUser" value="qlstation"/>
-            <property name="mqPassword" value="D1BCC547"/>
-            <property name="mqAddress" value="jmq-testcluster.jd.local:50088"/>
+            <property name="mqPassword" value="xxx"/>
+            <property name="mqAddress" value="jmq-xxx:50088"/>
             <property name="mqTopic" value="jdl_kds_key_node_log"/>
         </plugin>
     </plugins>
