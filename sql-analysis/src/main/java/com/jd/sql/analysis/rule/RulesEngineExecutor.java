@@ -36,14 +36,13 @@ public class RulesEngineExecutor {
 
 
     public static boolean refresh(){
-        InputStream inputStream;
         Properties properties = new Properties();
-        inputStream = RulesEngineExecutor.class.getClassLoader().getResourceAsStream("sql-analysis-rule-config.properties");
-        try {
-            properties.load(new InputStreamReader(inputStream));
-            inputStream.close();
+        try (InputStream inputStream = RulesEngineExecutor.class.getClassLoader().getResourceAsStream("sql-analysis-rule-config.properties");
+            InputStreamReader reader = new InputStreamReader(inputStream)) {
+            properties.load(reader);
         } catch (IOException e) {
-            logger.error("规则引擎配置文件加载失败",e);
+            logger.error("规则引擎配置文件加载失败", e);
+            return false;
         }
         Map<String,MVELRule> ruleMap = new HashMap<String,MVELRule>();
         ConcurrentHashMap<String,SqlScoreResultDetail> innerScoreMap = new ConcurrentHashMap<String,SqlScoreResultDetail>();
