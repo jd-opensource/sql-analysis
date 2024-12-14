@@ -83,13 +83,26 @@
 
   <update id="updateByPrimaryKey" parameterType="com.jd.sql.analysis_samples.po.Task">
     update task
-    set
-      title = #{title,jdbcType=VARCHAR},
-      content = #{content,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
-      update_time = #{updateTime,jdbcType=TIMESTAMP},
-      create_user = #{createUser,jdbcType=VARCHAR}
-    where id = #{id,jdbcType=BIGINT}
+    <set>
+      <if test="title != null and title != ''">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null and content != ''">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null and createUser != ''">
+        create_user = #{createUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <where>
+      id = #{id,jdbcType=BIGINT}
+    </where>
   </update>
 
 
